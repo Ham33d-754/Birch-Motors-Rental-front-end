@@ -1,14 +1,15 @@
-import { Route, Router } from 'react-router-dom'
+import { Route, Routes } from 'react-router-dom'
 import './App.css'
 import Home from './Pages/Home'
-function App() {
+import Garage from './Pages/Garage'
+
+const App = () => {
   return (
     <>
-      <Router>
-        <Route path="/" element={<Home />}>
-          Home
-        </Route>
-      </Router>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/garage" element={<Garage />} />
+      </Routes>
     </>
   )
 }
