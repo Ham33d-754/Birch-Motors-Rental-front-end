@@ -8,15 +8,15 @@ const Garage = () => {
     <>
       <h2>Garage</h2>
       <nav>
-        <Link to="create">Create Garage</Link>
-        <Link to="card">View Garage</Link>
-        <Link to="details/123">Garage Details</Link>
+        <Link to="/garage/create">Create Garage</Link>
+        <Link to="/garage/card">View Garage</Link>
+        <Link to="/garage/details/123">Garage Details</Link>
       </nav>
 
       <Routes>
-        <Route path="/garage/create" element={<CreateGarage />} />
-        <Route path="/garage/card" element={<GarageCard />} />
-        <Route path="/garage/details/:id" element={<GarageDetails />} />
+        <Route path="create" element={<CreateGarage />} />
+        <Route path="card" element={<GarageCard />} />
+        <Route path="details/:id" element={<GarageDetails />} />
       </Routes>
     </>
   )
