@@ -62,5 +62,5 @@ Users can:
 👉 [Deployed Project Link]()
 
 ### 🧩 Project Board:
-📌 [Trello Board]()
+📌 [Trello Board](https://trello.com/invite/b/689470a905efcf22b4360f98/ATTI5e031bc7b3a918806c5d7cc82a0c521d38C2D631/my-trello-board)
 

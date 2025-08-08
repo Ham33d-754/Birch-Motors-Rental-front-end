@@ -1,8 +1,7 @@
+import { useParams } from 'react-router-dom'
+
 const GarageDetails = () => {
-  return (
-    <>
-    
-    </>
-  )
+  const { id } = useParams()
+  return <></>
 }
 export default GarageDetails

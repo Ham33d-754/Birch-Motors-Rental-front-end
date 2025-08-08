@@ -1,8 +1,22 @@
+import { useState } from 'react'
+
 const CreateGarage = () => {
-  return (
-    <>
+  const initialState = {
+    name: '',
+    location: '',
+    capacity: ''
+  }
+
+  const [garageForm, setGarageForm] = useState(initialState)
+
+  const handleChange = () => {
+
+  }
+
+  const handleSubmit = () => {
     
-    </>
-  )
+  }
+
+  return <></>
 }
 export default CreateGarage
