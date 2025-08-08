@@ -14,6 +14,11 @@ function App() {
       setUser(currentAdmin)
     }
   }
+  const clearToken = () => {
+    localStorage.clear()
+    setUser(null)
+  }
+
   useEffect(() => {
     checkToken()
   }, [])
