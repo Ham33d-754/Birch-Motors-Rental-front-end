@@ -1,12 +1,13 @@
 import { Route, Routes } from 'react-router-dom'
 import './App.css'
 import Home from './Pages/Home'
+import Garage from './Pages/Garage'
 import Login from './Pages/Login'
 import Header from './Components/Header'
 import checkSession from './services/checkSession'
 import { useEffect, useState } from 'react'
 import Register from './Pages/Register'
-function App() {
+const App = () => {
   const [user, setUser] = useState(null)
   console.log(user)
   const checkToken = async () => {
@@ -32,6 +33,7 @@ function App() {
       </header>
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/garage/*" element={<Garage />} />
         <Route path="/signIn" element={<Login setUser={setUser} />} />
         <Route path="/register" element={<Register user={user} />} />
       </Routes>
