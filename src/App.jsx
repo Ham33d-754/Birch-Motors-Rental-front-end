@@ -1,23 +1,48 @@
-import { Route, Routes } from 'react-router-dom'
+import { Route, Routes, useNavigate } from 'react-router-dom'
 import './App.css'
 import Home from './Pages/Home'
 import Garage from './Pages/Garage'
 import Login from './Pages/Login'
-import { useState } from 'react'
-
+import Header from './Components/Header'
+import checkSession from './services/checkSession'
+import { use, useEffect, useState } from 'react'
+import Register from './Pages/Register'
 const App = () => {
+  let navigate = useNavigate()
   const [user, setUser] = useState(null)
+  const checkToken = async () => {
+    const token = localStorage.getItem('token')
+    if (token) {
+      let currentUser = await checkSession()
+      console.log(currentUser)
+      setUser(currentUser)
+    }
+  }
+  const clearToken = () => {
+    localStorage.clear()
+    setUser(null)
+    navigate('/signIn')
+  }
 
+  useEffect(() => {
+    checkToken()
+  }, [])
   return (
     <>
-      <header></header>
-      <main>
-        <Routes>
-          <Route path="/" element={<Home />} />
+      <header>
+        <Header clearToken={clearToken} user={user} />
+      </header>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        {user && user.role === 'manager' ? (
           <Route path="/garage/*" element={<Garage />} />
+        ) : null}
+
+        {!user ? (
           <Route path="/signIn" element={<Login setUser={setUser} />} />
-        </Routes>
-      </main>
+        ) : null}
+        <Route path="/register" element={<Register user={user} />} />
+      </Routes>
     </>
   )
 }
