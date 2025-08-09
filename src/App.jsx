@@ -1,15 +1,15 @@
-import { Route, Routes } from 'react-router-dom'
+import { Route, Routes, useNavigate } from 'react-router-dom'
 import './App.css'
 import Home from './Pages/Home'
 import Garage from './Pages/Garage'
 import Login from './Pages/Login'
 import Header from './Components/Header'
 import checkSession from './services/checkSession'
-import { useEffect, useState } from 'react'
+import { use, useEffect, useState } from 'react'
 import Register from './Pages/Register'
 const App = () => {
+  let navigate = useNavigate()
   const [user, setUser] = useState(null)
-  console.log(user)
   const checkToken = async () => {
     const token = localStorage.getItem('token')
     if (token) {
@@ -21,6 +21,7 @@ const App = () => {
   const clearToken = () => {
     localStorage.clear()
     setUser(null)
+    navigate('/signIn')
   }
 
   useEffect(() => {
@@ -33,8 +34,13 @@ const App = () => {
       </header>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/garage/*" element={<Garage />} />
-        <Route path="/signIn" element={<Login setUser={setUser} />} />
+        {user && user.role === 'manager' ? (
+          <Route path="/garage/*" element={<Garage />} />
+        ) : null}
+
+        {!user ? (
+          <Route path="/signIn" element={<Login setUser={setUser} />} />
+        ) : null}
         <Route path="/register" element={<Register user={user} />} />
       </Routes>
     </>
