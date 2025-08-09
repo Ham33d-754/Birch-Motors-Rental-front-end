@@ -21,7 +21,6 @@ const Register = ({ user }) => {
     setFormValue({ ...formValue, [e.target.name]: e.target.value })
     let isNumber = isNaN(formValue.phone)
     let password = formValue.password
-    let confirmPassword = formValue.confirmPassword
     if (isNumber) {
       setMsgPhone('phone number must be number')
     } else {
