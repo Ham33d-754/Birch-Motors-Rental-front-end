@@ -1,0 +1,16 @@
+body {
+  margin: 0;
+  box-sizing: border-box;
+}
+header {
+  background-color: aqua;
+}
+nav {
+  display: flex;
+}
+.nav-role {
+  display: flex;
+}
+a {
+  margin: 10px;
+}

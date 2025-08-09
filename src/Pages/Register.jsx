@@ -36,15 +36,20 @@ const Register = ({ user }) => {
   }
   const handelSubmit = async (e) => {
     e.preventDefault()
-    if (formValue.password === formValue.confirmPassword) {
-      const resopnse = await Client.post('/auth/register', formValue)
-      if (resopnse.data.msgExists) {
-        setMsg(resopnse.data.msgExists)
-      } else {
-        navigate('/signIn')
-      }
+    if (formValue.password.length < 7 && formValue.password.length > 0) {
+      setMsg('password must be at least 7 character long')
     } else {
-      setMsg('passwords must be matched')
+      setMsg('')
+      if (formValue.password === formValue.confirmPassword) {
+        const resopnse = await Client.post('/auth/register', formValue)
+        if (resopnse.data.msgExists) {
+          setMsg(resopnse.data.msgExists)
+        } else {
+          navigate('/signIn')
+        }
+      } else {
+        setMsg('passwords must be matched')
+      }
     }
   }
 
