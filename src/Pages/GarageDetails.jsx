@@ -7,11 +7,11 @@ const GarageDetails = () => {
   const [garage, setGarage] = useState(null)
 
   useEffect(() => {
-    const fetchGarages = async () => {
+    const linkGarage = async () => {
       const res = await axios.get(`http://localhost:3000/garage/${id}`)
       setGarage(res.data)
     }
-    fetchGarages()
+    linkGarage()
   }, [])
 
   return (

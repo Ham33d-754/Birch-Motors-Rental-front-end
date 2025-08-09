@@ -7,11 +7,11 @@ const GarageCard = () => {
   const navigate = useNavigate()
 
   useEffect(() => {
-    const fetchGarages = async () => {
+    const linkGarage = async () => {
       const res = await axios.get('http://localhost:3000/garage')
       setGarages(res.data)
     }
-    fetchGarages()
+    linkGarage()
   }, [])
 
   const handleClick = (id) => {
