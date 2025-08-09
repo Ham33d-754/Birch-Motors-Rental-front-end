@@ -10,7 +10,7 @@ const Garage = () => {
       <nav>
         <Link to="/garage/create">Create Garage</Link>
         <Link to="/garage/card">View Garage</Link>
-        <Link to="/garage/details/123">Garage Details</Link>
+        <Link to={`/garage/details/9`}>Garage Details</Link>
       </nav>
 
       <Routes>
