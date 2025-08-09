@@ -1,12 +1,18 @@
 import { useEffect, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 const GarageCard = () => {
   const [garages, setGarages] = useState([])
+  const navigate = useNavigate()
 
   useEffect(() => {
     const testingOnly = [{ id: 9, name: 'fawaz', location: 'manama' }]
     setGarages(testingOnly)
   }, [])
+
+  const handleClick = (id) => {
+    navigate(`/garage/details/${id}`)
+  }
   return (
     <>
       <h3>View Garages</h3>
@@ -15,8 +21,8 @@ const GarageCard = () => {
       ) : (
         <ul>
           {garages.map((garage) => (
-            <li key={garage.id}>
-              <h3>Garage Name: {garage.name}</h3>  <h4>Garage Location: {garage.location}</h4>
+            <li key={garage.id} onClick={() => handleClick(garage.id)}>
+              <h3>{garage.name} Garage </h3>
             </li>
           ))}
         </ul>
