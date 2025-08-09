@@ -5,13 +5,16 @@ import Login from './Pages/Login'
 import Header from './Components/Header'
 import checkSession from './services/checkSession'
 import { useEffect, useState } from 'react'
+import Register from './Pages/Register'
 function App() {
   const [user, setUser] = useState(null)
+  console.log(user)
   const checkToken = async () => {
     const token = localStorage.getItem('token')
     if (token) {
-      let currentAdmin = await checkSession()
-      setUser(currentAdmin)
+      let currentUser = await checkSession()
+      console.log(currentUser)
+      setUser(currentUser)
     }
   }
   const clearToken = () => {
@@ -25,11 +28,12 @@ function App() {
   return (
     <>
       <header>
-        <Header clearToken={clearToken} />
+        <Header clearToken={clearToken} user={user} />
       </header>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/signIn" element={<Login setUser={setUser} />} />
+        <Route path="/register" element={<Register user={user} />} />
       </Routes>
     </>
   )
