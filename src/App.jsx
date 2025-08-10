@@ -9,14 +9,10 @@ import CarDetails from './Pages/CarDetails'
 import { use, useEffect, useState } from 'react'
 import Register from './Pages/Register'
 import UpdateProfile from './Pages/UpdateProfile'
-<<<<<<< HEAD
+import Booking from './Pages/Booking'
 import Profile from './Pages/Profile'
-=======
-// 
-import CreateCar from './Pages/Createcar'
-// 
-// 
->>>>>>> main
+
+import CreateCar from './Components/Createcar'
 const App = () => {
   let navigate = useNavigate()
   const [user, setUser] = useState(null)
@@ -44,10 +40,12 @@ const App = () => {
       </header>
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/cars" element={<Booking />} />
         {user && user.role === 'manager' ? (
           <>
             <Route path="/garages/*" element={<Garage />} />
             <Route path="/signIn" element={<Login setUser={setUser} />} />
+            <Route path="/cars/new" element={<CreateCar />} />
           </>
         ) : null}
         {user && user.role === 'admin' ? (
@@ -68,8 +66,6 @@ const App = () => {
         ) : null}
         <Route path="/signIn" element={<Login setUser={setUser} />} />
         <Route path="/register" element={<Register user={user} />} />
-        <Route path='/cars' element={< CarDetails  />}/>
-        <Route path='/cars/new' element={< CreateCar  />}/>
       </Routes>
     </>
   )
