@@ -50,7 +50,7 @@ const App = () => {
         ) : null}
         <Route path="/signIn" element={<Login setUser={setUser} />} />
         <Route path="/register" element={<Register user={user} />} />
-        <Route path='/cars' element={< CarDetails />}/>
+        <Route path='/cars' element={< CarDetails  />}/>
       </Routes>
     </>
   )
