@@ -13,7 +13,7 @@ const Header = ({ clearToken, user }) => {
     navRole = (
       <div className="nav-role">
         <NavLink to={`/profile/${user.ids}`}>{user.name}</NavLink>
-        <NavLink to="/garages/card">Garages</NavLink>
+        <NavLink to="/garages">Garages</NavLink>
         <button onClick={clearToken}>Log out</button>
       </div>
     )

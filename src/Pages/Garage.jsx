@@ -13,8 +13,8 @@ const Garage = () => {
 
       <Routes>
         <Route path="create" element={<CreateGarage />} />
-        <Route path="card" element={<GarageCard />} />
-        <Route path="details/:id" element={<GarageDetails />} />
+        <Route path="/" element={<GarageCard />} />
+        <Route path="/:id" element={<GarageDetails />} />
       </Routes>
     </>
   )

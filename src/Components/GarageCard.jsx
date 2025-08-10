@@ -9,14 +9,14 @@ const GarageCard = () => {
 
   useEffect(() => {
     const linkGarage = async () => {
-      const res = await Client.get(`${BASE_URL}/garage/`)
+      const res = await Client.get(`${BASE_URL}/garages/`)
       setGarages(res.data.garages)
     }
     linkGarage()
   }, [])
 
   const handleClick = (id) => {
-    navigate(`garages/details/${id}`)
+    navigate(`${id}`)
   }
   return (
     <>

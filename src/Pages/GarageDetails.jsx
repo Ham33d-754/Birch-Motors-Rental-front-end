@@ -9,18 +9,22 @@ const GarageDetails = () => {
 
   useEffect(() => {
     const linkGarage = async () => {
-      const res = await axios.get(`${BASE_URL}/garages/${id}`)
-      setGarage(res.data)
-      console.log(res)
+      const res = await Client.get(`${BASE_URL}/garages/${id}`)
+      console.log(res.data.garage)
+      setGarage(res.data.garage)
+      console.log(garage)
     }
     linkGarage()
   }, [])
 
+  let display = garage?(<div>
+    <h2>Garage Details</h2>
+    <h2>{garage.name}</h2>
+    <h2>{garage.location}</h2>
+  </div>):(<h2>lodaing</h2>)
   return (
     <>
-      <h2>Garage Details</h2>
-      <h3>Name: {garage.name}</h3>
-      <h3>Location: {garage.location}</h3>
+      {display}
     </>
   )
 }
