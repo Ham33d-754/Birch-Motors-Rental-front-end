@@ -1,7 +1,22 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import Client from '../services/api'
 import { useNavigate } from 'react-router-dom'
-const UpdateProfile = () => {
+const UpdateProfile = ({ user }) => {
+  useEffect(() => {
+    const getUserApi = async () => {
+      const response = await Client.get(`/profile/${user.id}`)
+      console.log(response)
+      setFormValue({
+        username: response.data.user.username,
+        email: response.data.user.email,
+        phone: response.data.user.phone,
+        role: response.data.user.role,
+        password: '',
+        confirmPassword: ''
+      })
+    }
+    getUserApi()
+  }, [])
   const [msg, setMsg] = useState('')
   const [updatePassword, setUpdatePassword] = useState(false)
   const [msgPhone, setMsgPhone] = useState('')
@@ -35,12 +50,16 @@ const UpdateProfile = () => {
   }
   const handelSubmit = async (e) => {
     e.preventDefault()
+
     if (formValue.password.length < 7 && formValue.password.length > 0) {
       setMsg('password must be at least 7 character long')
     } else {
       setMsg('')
-      if (formValue.password === formValue.confirmPassword) {
-        const resopnse = await Client.post('/auth/register', formValue)
+      if (
+        formValue.password === '' ||
+        formValue.password === formValue.confirmPassword
+      ) {
+        const resopnse = await Client.put(`/profile/${user.id}`, formValue)
         if (resopnse.data.msgExists) {
           setMsg(resopnse.data.msgExists)
         } else {
@@ -81,7 +100,7 @@ const UpdateProfile = () => {
           value={formValue.phone}
           required
         />
-
+        <br />
         {updatePassword ? (
           <>
             <label htmlFor="password">Password</label>
@@ -102,10 +121,12 @@ const UpdateProfile = () => {
               required
             />
             <br />
-            <button onClick={setUpdatePassword(false)}> cancel</button>
+            <button onClick={() => setUpdatePassword(false)}> cancel</button>
           </>
         ) : (
-          <button onClick={setUpdatePassword(true)}>change password</button>
+          <button onClick={() => setUpdatePassword(true)}>
+            change password
+          </button>
         )}
 
         {user && user.role === 'admin' ? (
@@ -123,7 +144,6 @@ const UpdateProfile = () => {
             </select>
           </>
         ) : null}
-        <button type="submit"> register</button>
         <button type="submit"> register</button>
       </form>
     </>
