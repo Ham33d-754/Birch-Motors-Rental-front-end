@@ -3,7 +3,7 @@ import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import Client, { BASE_URL } from '../services/api'
 
-const CreateCar = ({ garageId, isOpen, handleOpen }) => {
+const CreateCar = ({ garageId, isOpen, hadelOpen, fetchGarageAndCars }) => {
   if (!isOpen) return null
   const [car, setCar] = useState({
     name: '',
@@ -11,8 +11,7 @@ const CreateCar = ({ garageId, isOpen, handleOpen }) => {
     image: '',
     garage: garageId
   })
-
-  const navigate = useNavigate()
+  const [msg, setMsg] = useState(null)
 
   const handleChange = (e) => {
     setCar({ ...car, [e.target.name]: e.target.value })
@@ -21,14 +20,13 @@ const CreateCar = ({ garageId, isOpen, handleOpen }) => {
     e.preventDefault()
     try {
       const res = await Client.post(`${BASE_URL}/cars`, car)
-
+      setMsg(res.data.msg)
       setCar({
         name: '',
         carType: 'Sedan',
         image: '',
         garage: garageId
       })
-      navigate(`/garages/${garageId}`)
     } catch (error) {
       console.log('error')
     }
@@ -38,6 +36,7 @@ const CreateCar = ({ garageId, isOpen, handleOpen }) => {
     <>
       <div style={styles.overlay}>
         <div style={styles.modal}>
+          {msg}
           <h2>Add a new Car</h2>
           <form onSubmit={handleSubmit}>
             <label htmlFor="name">Car Name</label>
@@ -72,7 +71,14 @@ const CreateCar = ({ garageId, isOpen, handleOpen }) => {
             <br />
             <button type="submit">Add Car</button>
           </form>
-          <button onClick={handleOpen}>close</button>
+          <button
+            onClick={() => {
+              fetchGarageAndCars()
+              hadelOpen()
+            }}
+          >
+            close
+          </button>
         </div>
       </div>
     </>

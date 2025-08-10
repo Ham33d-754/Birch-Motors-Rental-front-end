@@ -13,6 +13,7 @@ import Booking from './Pages/Booking'
 import Profile from './Pages/Profile'
 
 import CreateCar from './Components/Createcar'
+import GarageDetails from './Pages/GarageDetails'
 const App = () => {
   let navigate = useNavigate()
   const [user, setUser] = useState(null)
@@ -43,7 +44,8 @@ const App = () => {
         <Route path="/cars" element={<Booking />} />
         {user && user.role === 'manager' ? (
           <>
-            <Route path="/garages/*" element={<Garage />} />
+            <Route path="/garages" element={<Garage />} />
+            <Route path="/garages/:garageId" element={<GarageDetails />} />
             <Route path="/signIn" element={<Login setUser={setUser} />} />
             <Route path="/cars/new" element={<CreateCar />} />
           </>
