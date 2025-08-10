@@ -3,7 +3,7 @@ import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import Client, { BASE_URL } from '../services/api'
 
-const CreateCar = ({ garageId, isOpen, setIsOpen }) => {
+const CreateCar = ({ garageId, isOpen, handleOpen }) => {
   if (!isOpen) return null
   const [car, setCar] = useState({
     name: '',
@@ -72,7 +72,7 @@ const CreateCar = ({ garageId, isOpen, setIsOpen }) => {
             <br />
             <button type="submit">Add Car</button>
           </form>
-          <button onClick={() => setIsOpen(false)}>close</button>
+          <button onClick={handleOpen}>close</button>
         </div>
       </div>
     </>
