@@ -12,9 +12,11 @@ const Profile = ({ user }) => {
   const { userId } = useParams()
   useEffect(() => {
     const getUser = async () => {
+      console.log(user)
       if (user.role === 'admin') {
         const response = await Client.get(`${BASE_URL}/profile`)
-        setUserProflie(response.data.user)
+        setListOfUsers(response.data.listOfUsers)
+        console.log(listOfUsers)
       } else {
         const response = await Client.get(`${BASE_URL}/profile/${userId}`)
         setUserProflie(response.data.user)
@@ -24,20 +26,16 @@ const Profile = ({ user }) => {
   }, [])
   return (
     <>
+      {console.log(listOfUsers)}
       {userProflie ? (
         <div className="profile">
           <h2>username: {userProflie.username}</h2>
           <h2>email: {userProflie.email}</h2>
           <h2>phone: {userProflie.phone}</h2>
         </div>
-      ) : null}
-      <button
-        onClick={() => {
-          navigate(`/${userId}/edit`)
-        }}
-      >
-        edit
-      </button>
+      ) : (
+        <div className="proflie">{listOfUsers}</div>
+      )}
     </>
   )
 }

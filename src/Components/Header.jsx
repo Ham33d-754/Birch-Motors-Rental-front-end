@@ -6,6 +6,7 @@ const Header = ({ clearToken, user }) => {
     navRole = (
       <div className="nav-role">
         <NavLink to="/register">create new account</NavLink>
+        <NavLink to="/users">users</NavLink>
         <button onClick={clearToken}>Log out</button>
       </div>
     )
