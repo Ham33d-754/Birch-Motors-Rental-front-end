@@ -1,4 +1,4 @@
-export const BASE_URL = 'http://localhost:3001'
+export const BASE_URL = 'http://localhost:3005'
 import Axios from 'axios'
 const Client = Axios.create({ baseURL: BASE_URL })
 // Intercepts every request axios makes
