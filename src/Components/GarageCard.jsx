@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
+import Client, { BASE_URL } from '../services/api'
 
 const GarageCard = () => {
   const [garages, setGarages] = useState([])
@@ -8,8 +9,8 @@ const GarageCard = () => {
 
   useEffect(() => {
     const linkGarage = async () => {
-      const res = await axios.get('http://localhost:3000/garage')
-      setGarages(res.data)
+      const res = await Client.get(`${BASE_URL}/garage/`)
+      setGarages(res.data.garages)
     }
     linkGarage()
   }, [])

@@ -1,15 +1,18 @@
 import { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import axios from 'axios'
+import Client, { BASE_URL } from '../services/api'
 
 const GarageDetails = () => {
   const { id } = useParams()
-  const [garage, setGarage] = useState(null)
+  const [garage, setGarage] = useState()
 
   useEffect(() => {
     const linkGarage = async () => {
-      const res = await axios.get(`http://localhost:3000/garage/${id}`)
-      setGarage(res.data)
+      const res = await axios.get(`${BASE_URL}/garage/${id}`)
+      setGarage(res.data.garage)
+      console.log(res)
+      console.log(id)
     }
     linkGarage()
   }, [])
