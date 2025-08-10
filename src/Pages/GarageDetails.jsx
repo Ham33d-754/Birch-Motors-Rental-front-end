@@ -5,23 +5,26 @@ import Client, { BASE_URL } from '../services/api'
 
 const GarageDetails = () => {
   const { id } = useParams()
-  const [garage, setGarage] = useState()
+  const [garage, setGarage] = useState(null)
 
   useEffect(() => {
     const linkGarage = async () => {
-      const res = await axios.get(`${BASE_URL}/garage/${id}`)
+      const res = await Client.get(`${BASE_URL}/garages/${id}`)
+      console.log(res.data.garage)
       setGarage(res.data.garage)
-      console.log(res)
-      console.log(id)
+      console.log(garage)
     }
     linkGarage()
   }, [])
 
+  let display = garage?(<div>
+    <h2>Garage Details</h2>
+    <h2>{garage.name}</h2>
+    <h2>{garage.location}</h2>
+  </div>):(<h2>lodaing</h2>)
   return (
     <>
-      <h2>Garage Details</h2>
-      <h3>Name: {garage.name}</h3>
-      <h3>Location: {garage.location}</h3>
+      {display}
     </>
   )
 }
