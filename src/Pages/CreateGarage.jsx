@@ -2,6 +2,7 @@ import axios from 'axios'
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import Client, { BASE_URL } from '../services/api'
+import { useState } from 'react'
 
 const CreateGarage = () => {
   const [garage, setGarage] = useState({
@@ -24,6 +25,12 @@ const CreateGarage = () => {
     } catch (error) {
       console.log('error')
     }
+  const handleChange = (e) => {
+    setGarage({ ...garage, [e.target.id]: e.target.value })
+  }
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    setGarage({ name: '', location: '' })
   }
 
   return (
