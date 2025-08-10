@@ -18,7 +18,7 @@ const Garage = () => {
   }, [])
 
   const handleClick = (id) => {
-    navigate(`${id}`)
+    navigate(`/garages/${id}`)
   }
 
   return (
@@ -45,7 +45,7 @@ const Garage = () => {
 
       <Routes>
         <Route path="create" element={<CreateGarage />} />
-        <Route path="/:id" element={<GarageDetails />} />
+        <Route path=":id" element={<GarageDetails />} />
       </Routes>
     </>
   )
