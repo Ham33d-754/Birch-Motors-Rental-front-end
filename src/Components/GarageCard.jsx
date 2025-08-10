@@ -1,13 +1,18 @@
 import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import axios from 'axios'
+import Client, { BASE_URL } from '../services/api'
 
 const GarageCard = () => {
   const [garages, setGarages] = useState([])
   const navigate = useNavigate()
 
   useEffect(() => {
-    const testingOnly = [{ id: 9, name: 'fawaz', location: 'manama' }]
-    setGarages(testingOnly)
+    const linkGarage = async () => {
+      const res = await Client.get(`${BASE_URL}/garage/`)
+      setGarages(res.data.garages)
+    }
+    linkGarage()
   }, [])
 
   const handleClick = (id) => {
@@ -21,7 +26,7 @@ const GarageCard = () => {
       ) : (
         <ul>
           {garages.map((garage) => (
-            <li key={garage.id} onClick={() => handleClick(garage.id)}>
+            <li key={garage._id} onClick={() => handleClick(garage._id)}>
               <h3>{garage.name} Garage </h3>
             </li>
           ))}

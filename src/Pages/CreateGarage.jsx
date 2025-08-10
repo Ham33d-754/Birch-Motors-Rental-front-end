@@ -1,3 +1,7 @@
+import axios from 'axios'
+import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
+import Client, { BASE_URL } from '../services/api'
 import { useState } from 'react'
 
 const CreateGarage = () => {
@@ -6,6 +10,21 @@ const CreateGarage = () => {
     location: ''
   })
 
+  const navigate = useNavigate()
+
+  const handleChange = (e) => {
+    setGarage({ ...garage, [e.target.id]: e.target.value })
+  }
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+    try {
+      const res = await Client.post(`${BASE_URL}/garage/`, garage)
+
+      setGarage({ name: '', location: '' })
+      navigate('/garage/card')
+    } catch (error) {
+      console.log('error')
+    }
   const handleChange = (e) => {
     setGarage({ ...garage, [e.target.id]: e.target.value })
   }
