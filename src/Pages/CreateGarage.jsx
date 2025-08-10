@@ -25,12 +25,6 @@ const CreateGarage = () => {
     } catch (error) {
       console.log('error')
     }
-  const handleChange = (e) => {
-    setGarage({ ...garage, [e.target.id]: e.target.value })
-  }
-  const handleSubmit = (e) => {
-    e.preventDefault()
-    setGarage({ name: '', location: '' })
   }
 
   return (
