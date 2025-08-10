@@ -8,8 +8,7 @@ const Garage = () => {
     <>
       <h2>Garage</h2>
       <nav>
-        <Link to="/garage/create">Create Garage</Link>
-        <Link to="/garage/card">View Garage</Link>
+        <Link to="/garages/create">Create Garage</Link>
       </nav>
 
       <Routes>

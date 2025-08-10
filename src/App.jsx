@@ -36,9 +36,10 @@ const App = () => {
       <Routes>
         <Route path="/" element={<Home />} />
         {user && user.role === 'manager' ? (
-          <><Route path="/garage/*" element={<Garage />} />
-          <Route path="/signIn" element={<Login setUser={setUser} />} /> </>
-          
+          <>
+            <Route path="/garages/*" element={<Garage />} />
+            <Route path="/signIn" element={<Login setUser={setUser} />} />
+          </>
         ) : null}
 
         {user ? (

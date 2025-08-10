@@ -16,7 +16,7 @@ const GarageCard = () => {
   }, [])
 
   const handleClick = (id) => {
-    navigate(`/garage/details/${id}`)
+    navigate(`garages/details/${id}`)
   }
   return (
     <>
