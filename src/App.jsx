@@ -5,10 +5,18 @@ import Garage from './Pages/Garage'
 import Login from './Pages/Login'
 import Header from './Components/Header'
 import checkSession from './services/checkSession'
+import CarDetails from './Pages/CarDetails'
 import { use, useEffect, useState } from 'react'
 import Register from './Pages/Register'
 import UpdateProfile from './Pages/UpdateProfile'
+<<<<<<< HEAD
 import Profile from './Pages/Profile'
+=======
+// 
+import CreateCar from './Pages/Createcar'
+// 
+// 
+>>>>>>> main
 const App = () => {
   let navigate = useNavigate()
   const [user, setUser] = useState(null)
@@ -60,6 +68,8 @@ const App = () => {
         ) : null}
         <Route path="/signIn" element={<Login setUser={setUser} />} />
         <Route path="/register" element={<Register user={user} />} />
+        <Route path='/cars' element={< CarDetails  />}/>
+        <Route path='/cars/new' element={< CreateCar  />}/>
       </Routes>
     </>
   )
