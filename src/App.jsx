@@ -7,6 +7,7 @@ import Header from './Components/Header'
 import checkSession from './services/checkSession'
 import { use, useEffect, useState } from 'react'
 import Register from './Pages/Register'
+import UpdateProfile from './Pages/UpdateProfile'
 const App = () => {
   let navigate = useNavigate()
   const [user, setUser] = useState(null)
@@ -38,9 +39,15 @@ const App = () => {
           <Route path="/garage/*" element={<Garage />} />
         ) : null}
 
-        {!user ? (
-          <Route path="/signIn" element={<Login setUser={setUser} />} />
+        {user ? (
+          <>
+            <Route
+              path="/profile/:userId"
+              element={<UpdateProfile user={user} />}
+            />
+          </>
         ) : null}
+        <Route path="/signIn" element={<Login setUser={setUser} />} />
         <Route path="/register" element={<Register user={user} />} />
       </Routes>
     </>

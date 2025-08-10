@@ -1,6 +1,7 @@
 import { useState } from 'react'
-import Client from '../services/api'
+import Client, { BASE_URL } from '../services/api'
 import { useNavigate } from 'react-router-dom'
+import axios from 'axios'
 
 const Register = ({ user }) => {
   const [msg, setMsg] = useState('')
@@ -11,7 +12,7 @@ const Register = ({ user }) => {
     password: '',
     email: '',
     phone: '',
-    role: '',
+    role: 'user',
     confirmPassword: ''
   }
 
@@ -41,7 +42,7 @@ const Register = ({ user }) => {
     } else {
       setMsg('')
       if (formValue.password === formValue.confirmPassword) {
-        const resopnse = await Client.post('/auth/register', formValue)
+        let resopnse = await axios.post(`${BASE_URL}/auth/register`, formValue)
         if (resopnse.data.msgExists) {
           setMsg(resopnse.data.msgExists)
         } else {
