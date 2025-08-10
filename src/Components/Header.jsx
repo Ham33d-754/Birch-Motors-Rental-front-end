@@ -12,7 +12,7 @@ const Header = ({ clearToken, user }) => {
   } else if (user && user.role === 'manager') {
     navRole = (
       <div className="nav-role">
-        <NavLink to={`/profile/${user.ids}`}>{user.name}</NavLink>
+        <NavLink to={`/${user.ids}`}>{user.name}</NavLink>
         <NavLink to="/garages">Garages</NavLink>
         <button onClick={clearToken}>Log out</button>
       </div>
@@ -20,7 +20,7 @@ const Header = ({ clearToken, user }) => {
   } else if (user && user.role === 'user') {
     navRole = (
       <div className="nav-role">
-        <NavLink to={`/profile/${user.id}`}>{user.name}</NavLink>
+        <NavLink to={`/${user.id}`}>{user.name}</NavLink>
         <button onClick={clearToken}>Log out</button>
       </div>
     )

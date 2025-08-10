@@ -8,6 +8,7 @@ import checkSession from './services/checkSession'
 import { use, useEffect, useState } from 'react'
 import Register from './Pages/Register'
 import UpdateProfile from './Pages/UpdateProfile'
+import Profile from './Pages/Profile'
 const App = () => {
   let navigate = useNavigate()
   const [user, setUser] = useState(null)
@@ -41,11 +42,18 @@ const App = () => {
             <Route path="/signIn" element={<Login setUser={setUser} />} />
           </>
         ) : null}
+        {user && user.role === 'admin' ? (
+          <>
+            <Route path="/users" element={<Profile user={user} />} />
+            <Route path="/signIn" element={<Login setUser={setUser} />} />
+          </>
+        ) : null}
 
         {user ? (
           <>
+            <Route path="/:userId" element={<Profile user={user} />} />
             <Route
-              path="/profile/:userId"
+              path="/:userId/edit"
               element={<UpdateProfile user={user} />}
             />
           </>
