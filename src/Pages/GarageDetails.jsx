@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
-import { Link, useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import Client, { BASE_URL } from '../services/api'
 import CreateCar from '../Components/Createcar'
 import CarCard from '../Components/CarCard'
@@ -9,16 +10,14 @@ const GarageDetails = () => {
   const [garage, setGarage] = useState(null)
   const [isOpen, setIsOpen] = useState(false)
   const [listOfCars, setListOfCars] = useState(null)
+
   const fetchGarageAndCars = async () => {
-    try {
-      const res = await Client.get(`${BASE_URL}/garages/${garageId}`)
-      const res2 = await Client.get(`${BASE_URL}/cars/garage/${garageId}`)
-      setGarage(res.data.garage)
-      setListOfCars(res2.data.cars)
-    } catch (error) {
-      console.error('Error fetching garage details and cars:', error)
-    }
+    const res = await Client.get(`${BASE_URL}/garages/${id}`)
+    const res2 = await Client.get(`${BASE_URL}/cars/${id}`)
+    setGarage(res.data.garage)
+    setListOfCars(res2.data.cars)
   }
+
   useEffect(() => {
     fetchGarageAndCars()
   }, [garageId])
