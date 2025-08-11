@@ -11,6 +11,7 @@ const CarCard = ({ car }) => {
         <div className="car">
           <img src={car.image} alt={`an image of a ${car.name}`} />
           <h2>{car.name}</h2>
+          <h3>price per hour {car.pricePerHour}</h3>
           <button onClick={() => navigate(`/cars/${car._id}`)}>
             more details
           </button>
