@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
-import { Link } from 'react-router-dom'
 import Client, { BASE_URL } from '../services/api'
 import CreateCar from '../Components/Createcar'
 import CarCard from '../Components/CarCard'
