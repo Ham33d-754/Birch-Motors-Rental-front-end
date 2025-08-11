@@ -1,6 +1,5 @@
-import { Link, Routes, Route } from 'react-router-dom'
-import CreateGarage from '../Pages/CreateGarage'
-import GarageDetails from '../Pages/GarageDetails'
+import { Link } from 'react-router-dom'
+
 import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import Client, { BASE_URL } from '../services/api'
@@ -42,11 +41,6 @@ const Garage = () => {
           </ul>
         )}
       </>
-
-      <Routes>
-        <Route path="create" element={<CreateGarage />} />
-        <Route path=":id" element={<GarageDetails />} />
-      </Routes>
     </>
   )
 }

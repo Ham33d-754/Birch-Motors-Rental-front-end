@@ -17,7 +17,7 @@ const CreateGarage = () => {
   const handleSubmit = async (e) => {
     e.preventDefault()
     try {
-      const res = await Client.post(`${BASE_URL}/garage`, garage)
+      const res = await Client.post(`${BASE_URL}/garages`, garage)
 
       setGarage({ name: '', location: '' })
       navigate('/garages/card')
