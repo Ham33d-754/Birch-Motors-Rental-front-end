@@ -37,6 +37,7 @@ const Header = ({ clearToken, user }) => {
     <>
       <nav>
         <NavLink to="/">Home</NavLink>
+        <NavLink to="/booking">Book Now</NavLink>
         {navRole}
       </nav>
     </>

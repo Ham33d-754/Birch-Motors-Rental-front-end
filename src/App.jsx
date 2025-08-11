@@ -43,7 +43,7 @@ const App = () => {
       </header>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/cars" element={<Booking />} />
+        <Route path="/booking" element={<Booking user={user} />} />
         {user && user.role === 'manager' ? (
           <>
             <Route path="/garages" element={<Garage />} />
