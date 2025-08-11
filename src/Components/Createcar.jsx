@@ -65,9 +65,10 @@ const CreateCar = ({ garageId, isOpen, hadelOpen, fetchGarageAndCars }) => {
 
             <label htmlFor="image">Image</label>
             <input
-              type="text"
+              type="file"
               name="image"
               value={car.image}
+              accept="image/*"
               onChange={handleChange}
             />
             <br />
