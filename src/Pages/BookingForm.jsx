@@ -43,6 +43,15 @@ const BookingForm = ({ car }) => {
           onChange={handleChange}
         />
       </lable>
+
+      <label>
+        Payment Method :
+        <select name="payMethod" value={form.payMethod} onChange={handleChange}>
+          <option value="cash">Cash</option>
+          <option value="card">Card</option>
+        </select>
+      </label>
+      <button type="submit">Confirm Booking</button>
     </form>
   )
 }
