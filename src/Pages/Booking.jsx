@@ -1,14 +1,15 @@
 import { useEffect, useState } from 'react'
 import Client, { BASE_URL } from '../services/api'
+import BookingForm from './BookingForm'
 
 const Booking = ({ user }) => {
-  const [cars, setcars] = useState([])
+  const [cars, setCars] = useState([])
   const [selectedCar, setSelectedCar] = useState(null)
 
   useEffect(() => {
     const linkCars = async () => {
       const res = await Client.get(`${BASE_URL}/cars`)
-      setcars(res.data.cars)
+      setCars(res.data.cars)
     }
     linkCars()
   }, [])
@@ -16,8 +17,6 @@ const Booking = ({ user }) => {
   const handleSelectedCar = (car) => {
     setSelectedCar(car)
   }
-
-
 
   return (
     <div>
@@ -32,6 +31,7 @@ const Booking = ({ user }) => {
           </li>
         ))}
       </ul>
+      {selectedCar && <BookingForm setCars={setCars} car={selectedCar} user={user} />}
     </div>
   )
 }

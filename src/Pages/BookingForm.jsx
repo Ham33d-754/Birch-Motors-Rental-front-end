@@ -1,6 +1,7 @@
 import { useState } from 'react'
+import Client, { BASE_URL } from '../services/api'
 
-const BookingForm = ({ car }) => {
+const BookingForm = ({ car, user, setCars }) => {
   const [form, setForm] = useState({
     payMethod: car.carType,
     hours: 1
@@ -8,11 +9,19 @@ const BookingForm = ({ car }) => {
 
   const handleChange = async (e) => {
     const { name, value } = e.target
-    setForm((fullfilled) => ({ ...fullfilled, [name]: value }))
+    setForm((prev) => ({ ...prev, [name]: value }))
   }
 
   const handelSubmit = async (e) => {
     e.preventDefault()
+    const bookingData = {
+      car: car._id,
+      user: user._id,
+      payMethod: form.payMethod,
+      hours: form.hours
+    }
+    const res = await Client.get(`${BASE_URL}/cars`)
+    setCars(res.data.cars)
   }
 
   return (
@@ -33,7 +42,7 @@ const BookingForm = ({ car }) => {
       </p>
       <img src={car.image} />
 
-      <lable>
+      <label>
         Hours Needed:
         <input
           type="numbers"
@@ -42,7 +51,7 @@ const BookingForm = ({ car }) => {
           value={form.hours}
           onChange={handleChange}
         />
-      </lable>
+      </label>
 
       <label>
         Payment Method :
