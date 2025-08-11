@@ -23,30 +23,6 @@ const GarageDetails = () => {
     navigate('/garages')
   }
 
-  let display = garage ? (
-    <div>
-      <h2>Garage Details</h2>
-      <h4>Name: {garage.name}</h4>
-      <h4>Location: {garage.location}</h4>
-
-      <h4>Cars in Garage</h4>
-      {garage.cars && garage.cars.length > 0 ? (
-        <ul>
-          {garage.cars.map((car) => (
-            <li key={car._id}>
-              {car.name} - {car.carType}
-            </li>
-          ))}
-        </ul>
-      ) : (
-        <p>No Cars Here ...</p>
-      )}
-      <button onClick={handleDelete}>Delete</button>
-    </div>
-  ) : (
-    <h2>loading</h2>
-  )
-
   const [isOpen, setIsOpen] = useState(false)
   const [listOfCars, setListOfCars] = useState(null)
   useEffect(() => {
@@ -60,10 +36,6 @@ const GarageDetails = () => {
   }, [isOpen])
   const handleOpen = () => {
     setIsOpen(!isOpen)
-  }
-
-  const handleClose = () => {
-    setIsOpen(false)
   }
 
   let display = garage ? (
