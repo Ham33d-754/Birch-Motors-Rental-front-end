@@ -2,7 +2,7 @@ import { Route, Routes, useNavigate } from 'react-router-dom'
 import './App.css'
 import Home from './Pages/Home'
 import Garage from './Pages/Garage'
-import CreateGarage from './Pages/CreateGarage'
+import CreateGarage from './Components/CreateGarage'
 import GarageDetails from './Pages/GarageDetails'
 import Login from './Pages/Login'
 import Header from './Components/Header'
@@ -13,8 +13,9 @@ import Register from './Pages/Register'
 import UpdateProfile from './Pages/UpdateProfile'
 import Booking from './Pages/Booking'
 import Profile from './Pages/Profile'
-
+import Users from './Pages/Users'
 import CreateCar from './Components/Createcar'
+
 const App = () => {
   let navigate = useNavigate()
   const [user, setUser] = useState(null)
@@ -46,15 +47,14 @@ const App = () => {
         {user && user.role === 'manager' ? (
           <>
             <Route path="/garages" element={<Garage />} />
-            <Route path="/garages/create" element={<CreateGarage />} />
-            <Route path="/garages/:id" element={<GarageDetails />} />
+            <Route path="/garages/:garageId" element={<GarageDetails />} />
             <Route path="/signIn" element={<Login setUser={setUser} />} />
             <Route path="/cars/new" element={<CreateCar />} />
           </>
         ) : null}
         {user && user.role === 'admin' ? (
           <>
-            <Route path="/users" element={<Profile user={user} />} />
+            <Route path="/users" element={<Users user={user} />} />
             <Route path="/signIn" element={<Login setUser={setUser} />} />
           </>
         ) : null}
@@ -64,11 +64,12 @@ const App = () => {
             <Route path="/:userId" element={<Profile user={user} />} />
             <Route
               path="/:userId/edit"
-              element={<UpdateProfile user={user} />}
+              element={<UpdateProfile user={user} userId={user.id} />}
             />
           </>
         ) : null}
         <Route path="/signIn" element={<Login setUser={setUser} />} />
+        <Route path="/cars/:carId" element={<CarDetails />} />
         <Route path="/register" element={<Register user={user} />} />
       </Routes>
     </>

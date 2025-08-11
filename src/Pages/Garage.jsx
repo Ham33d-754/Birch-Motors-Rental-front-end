@@ -1,46 +1,40 @@
-import { Link } from 'react-router-dom'
-
+import GarageCard from '../Components/GarageCard'
+import CreateGarage from '../Components/CreateGarage'
 import { useEffect, useState } from 'react'
-import { useNavigate } from 'react-router-dom'
 import Client, { BASE_URL } from '../services/api'
 
 const Garage = () => {
-  const [garages, setGarages] = useState([])
-  const navigate = useNavigate()
-
+  const [garages, setGarages] = useState(null)
+  const [toggle, setToggle] = useState(false)
+  const linkGarage = async () => {
+    const res = await Client.get(`${BASE_URL}/garages`)
+    console.log(res.data.garages)
+    setGarages(res.data.garages)
+  }
   useEffect(() => {
-    const linkGarage = async () => {
-      const res = await Client.get(`${BASE_URL}/garages/`)
-      setGarages(res.data.garages)
-    }
     linkGarage()
   }, [])
-
-  const handleClick = (id) => {
-    navigate(`/garages/${id}`)
+  const handleToggle = () => {
+    setToggle(!toggle)
   }
-
   return (
     <>
-      <h2>Garage</h2>
-      <nav>
-        <Link to="/garages/create">Create Garage</Link>
-      </nav>
-
-      <>
-        <h3>View Garages</h3>
-        {garages.length === 0 ? (
-          <p>No Garages Available</p>
-        ) : (
-          <ul>
-            {garages.map((garage) => (
-              <li key={garage._id} onClick={() => handleClick(garage._id)}>
-                <h3>{garage.name} Garage </h3>
-              </li>
-            ))}
-          </ul>
-        )}
-      </>
+      <h2>Your Garages</h2>
+      <button onClick={handleToggle}>add garage</button>
+      <CreateGarage
+        toggle={toggle}
+        handleToggle={handleToggle}
+        linkGarage={linkGarage}
+      />
+      {garages ? (
+        <div className="garages">
+          {garages.map((garage) => (
+            <GarageCard garage={garage} key={garage._id} />
+          ))}
+        </div>
+      ) : (
+        <h2>loding...</h2>
+      )}
     </>
   )
 }
