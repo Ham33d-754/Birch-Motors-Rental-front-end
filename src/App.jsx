@@ -2,7 +2,6 @@ import { Route, Routes, useNavigate } from 'react-router-dom'
 import './App.css'
 import Home from './Pages/Home'
 import Garage from './Pages/Garage'
-import CreateGarage from './Components/CreateGarage'
 import GarageDetails from './Pages/GarageDetails'
 import Login from './Pages/Login'
 import Header from './Components/Header'
@@ -50,6 +49,7 @@ const App = () => {
             <Route path="/garages/:garageId" element={<GarageDetails />} />
             <Route path="/signIn" element={<Login setUser={setUser} />} />
             <Route path="/cars/new" element={<CreateCar />} />
+
           </>
         ) : null}
         {user && user.role === 'admin' ? (
