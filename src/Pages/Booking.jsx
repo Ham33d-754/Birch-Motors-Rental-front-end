@@ -17,9 +17,7 @@ const Booking = ({ user }) => {
     setSelectedCar(car)
   }
 
-  const handleCancel = () => {
-    setSelectedCar(null)
-  }
+
 
   return (
     <div>
