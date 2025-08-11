@@ -14,7 +14,7 @@ const GarageDetails = () => {
     const res = await Client.get(`${BASE_URL}/garages/${garageId}`)
     const res2 = await Client.get(`${BASE_URL}/cars/garage/${garageId}`)
     setGarage(res.data.garage)
-    setListOfCars(res2.data.cars)
+    setListOfCars(res2.data.car)
   }
 
   useEffect(() => {
@@ -24,6 +24,8 @@ const GarageDetails = () => {
   const hadelOpen = () => {
     setIsOpen(!isOpen)
   }
+  console.log(garage)
+  console.log(listOfCars)
 
   let display =
     garage && listOfCars ? (
@@ -38,9 +40,11 @@ const GarageDetails = () => {
           hadelOpen={hadelOpen}
           fetchGarageAndCars={fetchGarageAndCars}
         />
-        {listOfCars.map((car) => (
-          <CarCard car={car} key={car._id} />
-        ))}
+        {listOfCars.length ? (
+          listOfCars.map((car) => <CarCard car={car} key={car._id} />)
+        ) : (
+          <h2>no cars avaliable</h2>
+        )}
       </div>
     ) : (
       <h2>Loading...</h2>
