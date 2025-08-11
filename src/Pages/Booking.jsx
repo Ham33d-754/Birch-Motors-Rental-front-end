@@ -1,8 +1,7 @@
-import { useEffect, useState } from "react"
-import Client, { BASE_URL } from "../services/api"
+import { useEffect, useState } from 'react'
+import Client, { BASE_URL } from '../services/api'
 
-const Booking = () => {
-
+const Booking = ({ user }) => {
   const [cars, setcars] = useState([])
   const [selectedCar, setSelectedCar] = useState(null)
 
@@ -10,14 +9,32 @@ const Booking = () => {
     const linkCars = async () => {
       const res = await Client.get(`${BASE_URL}/cars`)
       setcars(res.data.cars)
-    } 
+    }
     linkCars()
+  }, [])
 
-  },[])
+  const handleSelectedCar = (car) => {
+    setSelectedCar(car)
+  }
+
+  const handleCancel = () => {
+    setSelectedCar(null)
+  }
+
   return (
-    <>
-    
-    </>
+    <div>
+      <h2>Available Cars</h2>
+      <ul>
+        {cars.map((car) => (
+          <li key={car._id}>
+            <p>
+              {car.name} - {car.carType}
+            </p>
+            <button onClick={() => handleSelectedCar(car)}>Book Now</button>
+          </li>
+        ))}
+      </ul>
+    </div>
   )
 }
 export default Booking
