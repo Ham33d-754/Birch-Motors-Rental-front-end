@@ -75,7 +75,7 @@ const CreateCar = ({ garageId, isOpen, hadelOpen, fetchGarageAndCars }) => {
             <label htmlFor="pricePerHour">price per hour</label>
             <input
               type="text"
-              name="impricePerHourage"
+              name="pricePerHour"
               value={car.pricePerHour}
               onChange={handleChange}
             />
