@@ -2,6 +2,8 @@ import { Route, Routes, useNavigate } from 'react-router-dom'
 import './App.css'
 import Home from './Pages/Home'
 import Garage from './Pages/Garage'
+import CreateGarage from './Pages/CreateGarage'
+import GarageDetails from './Pages/GarageDetails'
 import Login from './Pages/Login'
 import Header from './Components/Header'
 import checkSession from './services/checkSession'
@@ -43,7 +45,9 @@ const App = () => {
         <Route path="/cars" element={<Booking />} />
         {user && user.role === 'manager' ? (
           <>
-            <Route path="/garages/*" element={<Garage />} />
+            <Route path="/garages" element={<Garage />} />
+            <Route path="/garages/create" element={<CreateGarage />} />
+            <Route path="/garages/:id" element={<GarageDetails />} />
             <Route path="/signIn" element={<Login setUser={setUser} />} />
             <Route path="/cars/new" element={<CreateCar />} />
           </>
