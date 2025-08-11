@@ -11,7 +11,7 @@ import Register from './Pages/Register'
 import UpdateProfile from './Pages/UpdateProfile'
 import Booking from './Pages/Booking'
 import Profile from './Pages/Profile'
-
+import Users from './Pages/Users'
 import CreateCar from './Components/Createcar'
 import GarageDetails from './Pages/GarageDetails'
 const App = () => {
@@ -52,7 +52,7 @@ const App = () => {
         ) : null}
         {user && user.role === 'admin' ? (
           <>
-            <Route path="/users" element={<Profile user={user} />} />
+            <Route path="/users" element={<Users user={user} />} />
             <Route path="/signIn" element={<Login setUser={setUser} />} />
           </>
         ) : null}
@@ -62,11 +62,12 @@ const App = () => {
             <Route path="/:userId" element={<Profile user={user} />} />
             <Route
               path="/:userId/edit"
-              element={<UpdateProfile user={user} />}
+              element={<UpdateProfile user={user} userId={user.id} />}
             />
           </>
         ) : null}
         <Route path="/signIn" element={<Login setUser={setUser} />} />
+        <Route path="/cars/:carId" element={<CarDetails />} />
         <Route path="/register" element={<Register user={user} />} />
       </Routes>
     </>

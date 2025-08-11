@@ -12,7 +12,7 @@ const GarageDetails = () => {
   const fetchGarageAndCars = async () => {
     try {
       const res = await Client.get(`${BASE_URL}/garages/${garageId}`)
-      const res2 = await Client.get(`${BASE_URL}/cars/${garageId}`)
+      const res2 = await Client.get(`${BASE_URL}/cars/garage/${garageId}`)
       setGarage(res.data.garage)
       setListOfCars(res2.data.cars)
     } catch (error) {
