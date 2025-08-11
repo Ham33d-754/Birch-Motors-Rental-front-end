@@ -2,7 +2,7 @@ import { Route, Routes, useNavigate } from 'react-router-dom'
 import './App.css'
 import Home from './Pages/Home'
 import Garage from './Pages/Garage'
-import CreateGarage from './Pages/CreateGarage'
+import CreateGarage from './Components/CreateGarage'
 import GarageDetails from './Pages/GarageDetails'
 import Login from './Pages/Login'
 import Header from './Components/Header'
@@ -15,7 +15,7 @@ import Booking from './Pages/Booking'
 import Profile from './Pages/Profile'
 import Users from './Pages/Users'
 import CreateCar from './Components/Createcar'
-import GarageDetails from './Pages/GarageDetails'
+
 const App = () => {
   let navigate = useNavigate()
   const [user, setUser] = useState(null)

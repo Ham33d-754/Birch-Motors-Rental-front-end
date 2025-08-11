@@ -12,8 +12,8 @@ const GarageDetails = () => {
   const [listOfCars, setListOfCars] = useState(null)
 
   const fetchGarageAndCars = async () => {
-    const res = await Client.get(`${BASE_URL}/garages/${id}`)
-    const res2 = await Client.get(`${BASE_URL}/cars/${id}`)
+    const res = await Client.get(`${BASE_URL}/garages/${garageId}`)
+    const res2 = await Client.get(`${BASE_URL}/cars/garage/${garageId}`)
     setGarage(res.data.garage)
     setListOfCars(res2.data.cars)
   }
