@@ -8,8 +8,7 @@ const CarDetails = () => {
   useEffect(() => {
     const getCar = async () => {
       const response = await Client.get(`${BASE_URL}/cars/${carId}`)
-      setCar(response)
-      console.log(response.data.cars)
+      setCar(response.data.car)
     }
     getCar()
   }, [])
