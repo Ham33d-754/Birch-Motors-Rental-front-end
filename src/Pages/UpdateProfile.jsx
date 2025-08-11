@@ -1,11 +1,12 @@
 import { useEffect, useState } from 'react'
 import Client from '../services/api'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 const UpdateProfile = ({ user }) => {
+  const { userId } = useParams()
   useEffect(() => {
     const getUserApi = async () => {
-      const response = await Client.get(`/profile/${user.id}`)
-      console.log(response)
+      console.log(userId)
+      const response = await Client.get(`/profile/${userId}`)
       setFormValue({
         username: response.data.user.username,
         email: response.data.user.email,
@@ -59,11 +60,11 @@ const UpdateProfile = ({ user }) => {
         formValue.password === '' ||
         formValue.password === formValue.confirmPassword
       ) {
-        const resopnse = await Client.put(`/profile/${user.id}`, formValue)
+        const resopnse = await Client.put(`/profile/${userId}`, formValue)
         if (resopnse.data.msgExists) {
           setMsg(resopnse.data.msgExists)
         } else {
-          navigate('/signIn')
+          navigate(`/${userId}`)
         }
       } else {
         setMsg('passwords must be matched')
@@ -101,8 +102,23 @@ const UpdateProfile = ({ user }) => {
           required
         />
         <br />
+        {user && user.role === 'admin' ? (
+          <>
+            <select
+              name="role"
+              onChange={handleChange}
+              value={formValue.role}
+              required
+            >
+              <option value="">Select type of user</option>
+              <option value="user">User</option>
+              <option value="manager">Manager</option>
+            </select>
+          </>
+        ) : null}
         {updatePassword ? (
           <>
+            <br />
             <label htmlFor="password">Password</label>
             <input
               type="password"
@@ -124,27 +140,16 @@ const UpdateProfile = ({ user }) => {
             <button onClick={() => setUpdatePassword(false)}> cancel</button>
           </>
         ) : (
-          <button onClick={() => setUpdatePassword(true)}>
-            change password
-          </button>
+          <>
+            <br />
+            <button onClick={() => setUpdatePassword(true)}>
+              change password
+            </button>
+          </>
         )}
 
-        {user && user.role === 'admin' ? (
-          <>
-            <label htmlFor="role">Select Type of User</label>
-            <select
-              name="role"
-              onChange={handleChange}
-              value={formValue.role}
-              required
-            >
-              <option value="">Select type of user</option>
-              <option value="user">User</option>
-              <option value="manager">Manager</option>
-            </select>
-          </>
-        ) : null}
-        <button type="submit"> register</button>
+        <br />
+        <button type="submit"> Edit</button>
       </form>
     </>
   )
