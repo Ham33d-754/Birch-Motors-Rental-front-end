@@ -24,6 +24,8 @@ const GarageDetails = () => {
   const hadelOpen = () => {
     setIsOpen(!isOpen)
   }
+  console.log(garage)
+  console.log(listOfCars)
 
   let display = garage ? (
     <div>
