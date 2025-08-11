@@ -9,7 +9,8 @@ const CreateCar = ({ garageId, isOpen, hadelOpen, fetchGarageAndCars }) => {
     name: '',
     carType: 'Sedan',
     image: '',
-    garage: garageId
+    garage: garageId,
+    pricePerHour: '1'
   })
   const [msg, setMsg] = useState(null)
 
@@ -25,7 +26,8 @@ const CreateCar = ({ garageId, isOpen, hadelOpen, fetchGarageAndCars }) => {
         name: '',
         carType: 'Sedan',
         image: '',
-        garage: garageId
+        garage: garageId,
+        pricePerHour: '1'
       })
     } catch (error) {
       console.log('error')
@@ -66,6 +68,14 @@ const CreateCar = ({ garageId, isOpen, hadelOpen, fetchGarageAndCars }) => {
               type="text"
               name="image"
               value={car.image}
+              onChange={handleChange}
+            />
+            <br />
+            <label htmlFor="pricePerHour">price per hour</label>
+            <input
+              type="text"
+              name="impricePerHourage"
+              value={car.pricePerHour}
               onChange={handleChange}
             />
             <br />
