@@ -1,15 +1,49 @@
 import { useState } from 'react'
 
-const BookingForm = () => {
+const BookingForm = ({ car }) => {
   const [form, setForm] = useState({
-    name: car.name,
-    carType: car.carType,
-    image: car.image,
-    pricePerHour: car.pricePerHour,
-    garage: car.garage
+    payMethod: car.carType,
+    hours: 1
   })
 
-  
-  return <></>
+  const handleChange = async (e) => {
+    const { name, value } = e.target
+    setForm((fullfilled) => ({ ...fullfilled, [name]: value }))
+  }
+
+  const handelSubmit = async (e) => {
+    e.preventDefault()
+  }
+
+  return (
+    <form onSubmit={handelSubmit}>
+      <h2>Booking Form for {car.name}</h2>
+
+      <p>
+        <strong>Car: </strong>
+        {car.name}
+      </p>
+      <p>
+        <strong>Type: </strong>
+        {car.carType}
+      </p>
+      <p>
+        <strong>Price Per Hour: </strong>
+        {car.pricePerHour}
+      </p>
+      <img src={car.image} />
+
+      <lable>
+        Hours Needed:
+        <input
+          type="numbers"
+          name="hours"
+          min="1"
+          value={form.hours}
+          onChange={handleChange}
+        />
+      </lable>
+    </form>
+  )
 }
 export default BookingForm
