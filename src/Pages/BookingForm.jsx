@@ -3,7 +3,7 @@ import Client, { BASE_URL } from '../services/api'
 
 const BookingForm = ({ car, user, setCars }) => {
   const [form, setForm] = useState({
-    payMethod: car.carType,
+    payMethod: 'Cash',
     hours: 1
   })
 
@@ -14,14 +14,17 @@ const BookingForm = ({ car, user, setCars }) => {
 
   const handelSubmit = async (e) => {
     e.preventDefault()
+    console.log(car._id)
+    console.log(user.id)
     const bookingData = {
       car: car._id,
-      user: user._id,
+      user: user.id,
       payMethod: form.payMethod,
       hours: form.hours
     }
-    const res = await Client.get(`${BASE_URL}/cars`)
-    setCars(res.data.cars)
+    const res = await Client.post(`${BASE_URL}/bookings`, bookingData)
+    console.log(res)
+    // setCars(res.data.cars)
   }
 
   return (
@@ -56,8 +59,8 @@ const BookingForm = ({ car, user, setCars }) => {
       <label>
         Payment Method :
         <select name="payMethod" value={form.payMethod} onChange={handleChange}>
-          <option value="cash">Cash</option>
-          <option value="card">Card</option>
+          <option value="Cash">Cash</option>
+          <option value="Card">Card</option>
         </select>
       </label>
       <button type="submit">Confirm Booking</button>
