@@ -11,8 +11,6 @@ const CreateGarage = ({ toggle, handleToggle, linkGarage }) => {
   })
   const [msg, setMsg] = useState('')
 
-  const navigate = useNavigate()
-
   const handleChange = (e) => {
     setGarage({ ...garage, [e.target.id]: e.target.value })
   }
@@ -29,8 +27,8 @@ const CreateGarage = ({ toggle, handleToggle, linkGarage }) => {
   }
 
   return (
-    <div style={styles.overlay}>
-      <div style={styles.modal}>
+    <div className="overlay">
+      <div className="modal">
         {msg}
         <form onSubmit={handleSubmit}>
           <label htmlFor="name">Garage Name: </label>

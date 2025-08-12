@@ -28,6 +28,7 @@ const Login = ({ setUser }) => {
     <>
       <h2>{message}</h2>
       <form onSubmit={handelSubmit}>
+        <label htmlFor="username">username: </label>
         <input
           type="text"
           name="username"
@@ -35,6 +36,8 @@ const Login = ({ setUser }) => {
           onChange={handelChange}
           required
         />
+        <br />
+        <label htmlFor="password">password: </label>
         <input
           type="password"
           name="password"
@@ -42,6 +45,7 @@ const Login = ({ setUser }) => {
           onChange={handelChange}
           required
         />
+        <br />
         <button type="submit">Log In</button>
       </form>
     </>

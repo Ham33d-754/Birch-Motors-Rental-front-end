@@ -1,5 +1,4 @@
 import CreateReview from './CreateReview'
-
 import { useEffect, useState } from 'react'
 import Client, { BASE_URL } from '../services/api'
 
@@ -24,8 +23,8 @@ const ViewBookings = ({ user }) => {
       const res = await Client.get(`${BASE_URL}/bookings/user/${user._id}`)
       setBookings(res.data.bookings)
     }
-    // linkBookings()
-    // linkReview()
+    linkBookings()
+    linkReview()
   }, [user])
   return (
     <>
@@ -53,26 +52,26 @@ const ViewBookings = ({ user }) => {
                 {booking.hours} Hours
               </p>
               <img src={booking.car.image} />
+              <h2>create review</h2>
+              <button
+                onClick={() => {
+                  setToggle(true)
+                  setSelectedCarId(booking.car._id) // needs booking to work
+                }}
+              >
+                Add Review
+              </button>
+              <CreateReview
+                toggle={toggle}
+                handleToggle={handleToggle}
+                linkReview={linkReview}
+                carId={selectedCarId}
+              />{' '}
             </li>
           ))}
         </ul>
       )}
 
-      <h2>create review</h2>
-      <button
-        onClick={() => {
-          setToggle(true)
-          setSelectedCarId(booking.car._id) // needs booking to work 
-        }}
-      >
-        Add Review
-      </button>
-      <CreateReview
-        toggle={toggle}
-        handleToggle={handleToggle}
-        linkReview={linkReview}
-        carId={selectedCarId}
-      />
       {/* {reviews ? (
         <div className="reviews">
           {reviews.map((review) => (
