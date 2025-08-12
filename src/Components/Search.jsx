@@ -1,62 +1,38 @@
-import { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
-import Client, { BASE_URL } from '../services/api'
-
-const Search = () => {
-
-// { onChange, onSubmit, value }
-// review
-
-  const { reviewid } = useParams()
-  const [reviewInfo, setReviewInfo] = useState(null)
+import { useState } from 'react'
+import SearchCar from './SearchCar'
+//
+const Search = ({ cars, onSelectCar }) => {
   const [searchQuery, setSearchQuery] = useState('')
-
-  // const deleteTicket = async () => {
-  //   ticketId !== 'null'
-  //     ? await axios.delete(`${BASE_URL}/ticket/${ticketId}`)
-  //     : await axios.delete(`${BASE_URL}/ticket/${searchQuery}`)
-  //   setSearchQuery('')
-  //   setTicketInfo(null)
-  // }
-
-
-  useEffect(() => {
-    const getReview = async () => {
-      const response = await Client.get(`${BASE_URL}/reviews/${reviewid}`)
-
-      console.log(response.data)
-      setReviewInfo(response.data)
-    }
-
-    reviewid !== 'null' && getReview()
-  }, [reviewid])
+  const [filteredCars, setFilteredCars] = useState([])
 
   const getSearchResult = async (e) => {
     e.preventDefault()
-    let response = await axios.get(`${BASE_URL}/reviews/${searchQuery}`)
-
-    setReviewInfo(response.data)
-    // setSearchQuery('')
+    const matches = cars.filter((car) => car.name.includes(searchQuery))
+    setFilteredCars(matches)
   }
+    return (
+      <>
 
-  const handleChange = (event) => {
-    setSearchQuery(event.target.value)
-  }
 
-  return (
-    <>
-      <form className="search-form" onSubmit={onSubmit}>
-        <button type="submit">Find</button>
-        <input
-          type="text"
-          name="search"
-          id="search"
-          placeholder="Car Name..."
-          onChange={onChange}
-          value={value}
+        <SearchCar
+          onChange={(e) => setSearchQuery(e.target.value)}
+          value={searchQuery}
+          onSubmit={getSearchResult}
         />
-      </form>
-    </>
-  )
-}
+
+        {filteredCars.length > 0 && (
+          <div className="searchResults">
+            {filteredCars.map((car) => (
+              <div
+                key={car._id}
+                onClick={() => onSelectCar(car)} // pass selected car back
+              >
+                {car.name}
+              </div>
+            ))}
+          </div>
+        )}
+      </>
+    )
+  }
 export default Search

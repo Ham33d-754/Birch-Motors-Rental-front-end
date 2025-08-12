@@ -26,7 +26,7 @@ const Booking = ({ user }) => {
   return (
     <div>
       <h2>Search bar goes here</h2>
-      <Search />
+      <Search cars={cars} onSelectCar={handleSelectedCar} />
 
       {clicked ? (
         <BookingForm car={selectedCar} user={user} handelClick={handelClick} />
