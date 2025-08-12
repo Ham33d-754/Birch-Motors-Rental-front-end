@@ -20,7 +20,7 @@ const ViewBookings = ({ user }) => {
   }
   useEffect(() => {
     const linkBookings = async () => {
-      const res = await Client.get(`${BASE_URL}/bookings/user/${user._id}`)
+      const res = await Client.get(`${BASE_URL}/bookings`)
       setBookings(res.data.bookings)
     }
     linkBookings()
@@ -56,7 +56,7 @@ const ViewBookings = ({ user }) => {
               <button
                 onClick={() => {
                   setToggle(true)
-                  setSelectedCarId(booking.car._id) // needs booking to work
+                  setSelectedCarId(booking.car) // needs booking to work
                 }}
               >
                 Add Review

@@ -3,7 +3,7 @@ import { useState } from 'react'
 // import { useNavigate } from 'react-router-dom'
 import Client, { BASE_URL } from '../services/api'
 
-const CreateReview = ({ toggle, handleToggle, linkReview, userId, carId }) => {
+const CreateReview = ({ toggle, handleToggle, linkReview, carId }) => {
   if (!toggle) return null
 
   const [review, setReview] = useState({ rating: '', comment: '' })
@@ -19,7 +19,6 @@ const CreateReview = ({ toggle, handleToggle, linkReview, userId, carId }) => {
     try {
       const res = await Client.post(`${BASE_URL}/reviews`, {
         ...review,
-        user: userId,
         car: carId
       })
 
