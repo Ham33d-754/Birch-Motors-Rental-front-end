@@ -1,11 +1,12 @@
 import { useEffect, useState } from 'react'
 import Client, { BASE_URL } from '../services/api'
 import BookingForm from './BookingForm'
+import CarCard from '../Components/CarCard'
 
 const Booking = ({ user }) => {
   const [cars, setCars] = useState([])
   const [selectedCar, setSelectedCar] = useState(null)
-
+  const [clicked, setIsClicked] = useState(false)
   useEffect(() => {
     const linkCars = async () => {
       const res = await Client.get(`${BASE_URL}/cars`)
@@ -17,21 +18,31 @@ const Booking = ({ user }) => {
   const handleSelectedCar = (car) => {
     setSelectedCar(car)
   }
+  const handelClick = () => {
+    setIsClicked(!clicked)
+  }
 
   return (
     <div>
-      <h2>Available Cars</h2>
-      <ul>
-        {cars.map((car) => (
-          <li key={car._id}>
-            <p>
-              {car.name} - {car.carType}
-            </p>
-            <button onClick={() => handleSelectedCar(car)}>Book Now</button>
-          </li>
-        ))}
-      </ul>
-      {selectedCar && <BookingForm setCars={setCars} car={selectedCar} user={user} />}
+      {clicked ? (
+        <BookingForm car={selectedCar} user={user} handelClick={handelClick} />
+      ) : (
+        <>
+          <h2>Available Cars</h2>
+          <div>
+            {cars.map((car) => (
+              <div>
+                <CarCard
+                  car={car}
+                  key={car._id}
+                  handelClick={handelClick}
+                  handleSelectedCar={handleSelectedCar}
+                />
+              </div>
+            ))}
+          </div>
+        </>
+      )}
     </div>
   )
 }
