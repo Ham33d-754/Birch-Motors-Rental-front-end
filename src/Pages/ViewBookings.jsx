@@ -5,9 +5,11 @@ const ViewBookings = ({ user }) => {
   const [bookings, setBookings] = useState([])
   useEffect(() => {
     const linkBookings = async () => {
-      const res = await Client.get(`${BASE_URL}/bookings/user/${user._id}`)
+      const res = await Client.get(`${BASE_URL}/bookings`)
+      console.log(res)
       setBookings(res.data.bookings)
     }
+    linkBookings()
   }, [user])
   return (
     <>
