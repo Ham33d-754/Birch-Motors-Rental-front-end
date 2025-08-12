@@ -1,38 +1,22 @@
 import { useState } from 'react'
 import SearchCar from './SearchCar'
 //
-const Search = ({ cars, onSelectCar }) => {
+const Search = ({ cars, onSelectCar, onResults }) => {
   const [searchQuery, setSearchQuery] = useState('')
-  const [filteredCars, setFilteredCars] = useState([])
 
   const getSearchResult = async (e) => {
     e.preventDefault()
     const matches = cars.filter((car) => car.name.includes(searchQuery))
-    setFilteredCars(matches)
+    onResults(matches) // this will send matching results to parent
   }
-    return (
-      <>
-
-
-        <SearchCar
-          onChange={(e) => setSearchQuery(e.target.value)}
-          value={searchQuery}
-          onSubmit={getSearchResult}
-        />
-
-        {filteredCars.length > 0 && (
-          <div className="searchResults">
-            {filteredCars.map((car) => (
-              <div
-                key={car._id}
-                onClick={() => onSelectCar(car)} // pass selected car back
-              >
-                {car.name}
-              </div>
-            ))}
-          </div>
-        )}
-      </>
-    )
-  }
+  return (
+    <>
+      <SearchCar
+        onChange={(e) => setSearchQuery(e.target.value)}
+        value={searchQuery}
+        onSubmit={getSearchResult}
+      />
+    </>
+  )
+}
 export default Search
