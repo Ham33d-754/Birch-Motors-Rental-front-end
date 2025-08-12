@@ -6,18 +6,16 @@ import Client, { BASE_URL } from '../services/api'
 const ViewBookings = ({ user }) => {
   const [bookings, setBookings] = useState([])
   //
-  // const [reviews, setReviews] = useState(null)
+  const [reviews, setReviews] = useState(null)
   const [selectedCarId, setSelectedCarId] = useState(null)
 
   const [toggle, setToggle] = useState(false)
   const linkReview = async () => {
     const res = await Client.get(`${BASE_URL}/reviews`)
-    console.log(res.data.reviews)
-    setReviews(res.data.reviews)
+    console.log(` review1 ${res.data.reviews}`)
+    setReviews(` review2 ${res.data.reviews}`)
   }
-  useEffect(() => {
-    linkReview()
-  }, [])
+
   const handleToggle = () => {
     setToggle(!toggle)
   }
@@ -26,6 +24,8 @@ const ViewBookings = ({ user }) => {
       const res = await Client.get(`${BASE_URL}/bookings/user/${user._id}`)
       setBookings(res.data.bookings)
     }
+    // linkBookings()
+    // linkReview()
   }, [user])
   return (
     <>
@@ -53,26 +53,26 @@ const ViewBookings = ({ user }) => {
                 {booking.hours} Hours
               </p>
               <img src={booking.car.image} />
-              <h2>create review</h2>
-              <button
-                onClick={() => {
-                  setToggle(true)
-                  setSelectedCarId(booking.car._id)
-                }}
-              >
-                Add Review
-              </button>
-              <CreateReview
-                toggle={toggle}
-                handleToggle={handleToggle}
-                linkReview={linkReview}
-                carId={selectedCarId}
-              />
             </li>
           ))}
         </ul>
       )}
 
+      <h2>create review</h2>
+      <button
+        onClick={() => {
+          setToggle(true)
+          setSelectedCarId(booking.car._id) // needs booking to work 
+        }}
+      >
+        Add Review
+      </button>
+      <CreateReview
+        toggle={toggle}
+        handleToggle={handleToggle}
+        linkReview={linkReview}
+        carId={selectedCarId}
+      />
       {/* {reviews ? (
         <div className="reviews">
           {reviews.map((review) => (
