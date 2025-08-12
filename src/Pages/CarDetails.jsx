@@ -25,13 +25,13 @@ const CarDetails = ({ user }) => {
       Rented: !car.Rented
     })
     setCar((prevCar) => ({
-      ...prevCar, // Keep the existing properties
-      Rented: response.data.Rented // Update the Rented property with the new value
+      ...prevCar,
+      Rented: response.data.Rented
     }))
   }
   const deleteCar = async () => {
     const response = await Client.delete(`${BASE_URL}/cars/${carId}`)
-    navigate('/garages')
+    navigate(`/garages/${garage._id}`)
   }
   return (
     <>
