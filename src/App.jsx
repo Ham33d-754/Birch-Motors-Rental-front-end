@@ -14,6 +14,9 @@ import Booking from './Pages/Booking'
 import Profile from './Pages/Profile'
 import Users from './Pages/Users'
 import CreateCar from './Components/Createcar'
+import Payment from './Pages/Payment'
+
+import Completion from './Pages/Completion'
 
 const App = () => {
   let navigate = useNavigate()
@@ -43,13 +46,14 @@ const App = () => {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/booking" element={<Booking user={user} />} />
+        <Route path="/payment" element={<Payment />} />
+        <Route path="/success" element={<Completion />} />
         {user && user.role === 'manager' ? (
           <>
             <Route path="/garages" element={<Garage />} />
             <Route path="/garages/:garageId" element={<GarageDetails />} />
             <Route path="/signIn" element={<Login setUser={setUser} />} />
             <Route path="/cars/new" element={<CreateCar />} />
-
           </>
         ) : null}
         {user && user.role === 'admin' ? (

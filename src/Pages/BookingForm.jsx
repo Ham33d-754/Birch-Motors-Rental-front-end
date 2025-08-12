@@ -1,12 +1,15 @@
 import { useState } from 'react'
 import Client, { BASE_URL } from '../services/api'
+import Payment from './Payment'
 
 const BookingForm = ({ car, user, handelClick }) => {
   const [form, setForm] = useState({
-    payMethod: 'Cash',
+    payMethod: 'Card',
     hours: 0
   })
   const [amount, setAmount] = useState(0)
+  const [confirm, setConfirm] = useState(false)
+  const [bookingData, setBookingData] = useState(null)
 
   const [msg, setMsg] = useState(`Your total Amount ${amount} BHD`)
 
@@ -19,11 +22,12 @@ const BookingForm = ({ car, user, handelClick }) => {
 
     setMsg(`Your total Amount ${calculatedAmount} BHD`)
   }
+  const handleConfrim = () => {
+    setConfirm(!confirm)
+  }
 
   const handelSubmit = async (e) => {
     e.preventDefault()
-    console.log(car._id)
-    console.log(user.id)
     const bookingData = {
       car: car._id,
       user: user.id,
@@ -31,10 +35,12 @@ const BookingForm = ({ car, user, handelClick }) => {
       hours: form.hours,
       amount: amount
     }
-    const res = await Client.post(`${BASE_URL}/bookings`, bookingData)
-  }
+    setBookingData(bookingData)
+    handleConfrim()
 
-  return (
+    // const res = await Client.post(`${BASE_URL}/bookings`, bookingData)
+  }
+  const bookingForm = (
     <form onSubmit={handelSubmit}>
       <h2>Booking Form for {car.name}</h2>
 
@@ -78,5 +84,6 @@ const BookingForm = ({ car, user, handelClick }) => {
       </button>
     </form>
   )
+  return confirm ? <Payment bookingData={bookingData} /> : bookingForm
 }
 export default BookingForm
