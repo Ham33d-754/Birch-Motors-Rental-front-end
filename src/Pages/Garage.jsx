@@ -33,7 +33,7 @@ const Garage = () => {
           ))}
         </div>
       ) : (
-        <h2>loding...</h2>
+        <h2>loading...</h2>
       )}
     </>
   )

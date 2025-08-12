@@ -6,19 +6,21 @@ Welcome to **Birch Motors App**, a sleek and modern web platform built for showc
 
 ## 🔗 Connect With us
 
-- 👤 **Name:** Fawaz Aljar  
-- 💼 [LinkedIn](https://www.linkedin.com/in/aljar/)  
-- 🐙 [GitHub](https://github.com/10Fawaz) 
+- 👤 **Name:** Fawaz Aljar
+- 💼 [LinkedIn](https://www.linkedin.com/in/aljar/)
+- 🐙 [GitHub](https://github.com/10Fawaz)
 
 ---
-- 👤 **Name:** Feras Albuflasa  
-- 💼 [LinkedIn](https://www.linkedin.com/in/ferasalbuflasa/)  
-- 🐙 [GitHub](https://github.com/FerasAlbuflasa01)  
+
+- 👤 **Name:** Feras Albuflasa
+- 💼 [LinkedIn](https://www.linkedin.com/in/ferasalbuflasa/)
+- 🐙 [GitHub](https://github.com/FerasAlbuflasa01)
 
 ---
-- 👤 **Name:** Mahmood Ali  
-- 💼 [LinkedIn](https://www.linkedin.com/in/mahmood-abdulnabi/)  
-- 🐙 [GitHub](https://github.com/Ham33d-754)  
+
+- 👤 **Name:** Mahmood Ali
+- 💼 [LinkedIn](https://www.linkedin.com/in/mahmood-abdulnabi/)
+- 🐙 [GitHub](https://github.com/Ham33d-754)
 
 ---
 
@@ -27,15 +29,18 @@ Welcome to **Birch Motors App**, a sleek and modern web platform built for showc
 The **Birch Motors App** is an end-to-end application allowing users to view cars and Book them for a day, while admins can manage Cars and view Bookings history. The system is designed with clean architecture, user authentication, and intuitive interfaces.
 
 Admins can:
-- Making managers
-- Has managers abilities
+
+- Make Managers Accounts
+- Has Managers Abilities
 
 Managers can:
-- Add/edit/remove Cars.
-- Add/edit/remove Garages.
+
+- Add/Remove Cars.
+- Add/remove Garages.
 - Manage customer Bookings.
 
 Users can:
+
 - Browse car collections.
 - View details for each car.
 - Book directly through the app.
@@ -44,23 +49,65 @@ Users can:
 
 ## 🛠️ Technologies Used
 
-| Technology       | Purpose                   |
-|------------------|---------------------------|
-| React.js         | Frontend UI               |
-| Node.js & Express| Backend API               |
-| MongoDB          | Database                  |
-| Mongoose         | ORM for MongoDB           |
-| CSS              | Styling                   |
-| JWT              | User authentication       |
-| Trello           | Task & Project Management |
+| Technology        | Purpose                   |
+| ----------------- | ------------------------- |
+| React.js          | Frontend UI               |
+| Node.js & Express | Backend API               |
+| MongoDB           | Database                  |
+| Mongoose          | ORM for MongoDB           |
+| Insonmia          | Testing Back-End          |
+| CSS               | Styling                   |
+| JWT               | User authentication       |
+| Trello            | Task & Project Management |
 
 ---
 
 ## 🚀 Getting Started
 
 ### 🔗 Live Site:
+
 👉 [Deployed Project Link]()
 
 ### 🧩 Project Board:
-📌 [Trello Board]()
 
+📌 [Trello Board](https://trello.com/b/B4Rdq3nV/my-trello-board)
+
+### 🧩 Front-End GitHub:
+
+📌 [Front-End](https://github.com/Ham33d-754/Birch-Motors-Rental-front-end.git)
+
+### 🧩 Back-End GitHub:
+
+📌 [Back-End](https://github.com/Ham33d-754/Birch-Motors-Rental-back-end.git)
+
+### Demo Accounts
+
+| Role    | Username | Password    |
+| ------- | -------- | ----------- |
+| Admin   | admin    | admin123    |
+| Manager | manager  | manager1234 |
+| User    | user     | user1234    |
+
+## 🖼 ScreenShots
+
+---
+
+## 🔮 Future Enchancements
+
+- Booking Cancellation
+- Refund Policy
+- more Admin functionality
+
+---
+
+## 🙌 Credits
+
+- [Stripe Payment Method](https://stripe.com/)
+
+---
+
+- 👤 **Fawaz Aljar**
+- 👤 **Feras Albuflasa**
+- 👤 **Mahmood Ali**
+
+---
