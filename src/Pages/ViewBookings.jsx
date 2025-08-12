@@ -1,15 +1,31 @@
+import CreateReview from './CreateReview'
 import { useEffect, useState } from 'react'
 import Client, { BASE_URL } from '../services/api'
 
 const ViewBookings = ({ user }) => {
   const [bookings, setBookings] = useState([])
+  //
+  const [reviews, setReviews] = useState(null)
+  const [selectedCarId, setSelectedCarId] = useState(null)
+
+  const [toggle, setToggle] = useState(false)
+  const linkReview = async () => {
+    const res = await Client.get(`${BASE_URL}/reviews`)
+    console.log(` review1 ${res.data.reviews}`)
+    setReviews(` review2 ${res.data.reviews}`)
+  }
+
+  const handleToggle = () => {
+    setToggle(!toggle)
+  }
   useEffect(() => {
     const linkBookings = async () => {
       const res = await Client.get(`${BASE_URL}/bookings`)
-      console.log(res)
       setBookings(res.data.bookings)
     }
     linkBookings()
+    linkReview()
+
   }, [user])
   return (
     <>
@@ -37,10 +53,35 @@ const ViewBookings = ({ user }) => {
                 {booking.hours} Hours
               </p>
               <img src={booking.car.image} />
+              <h2>create review</h2>
+              <button
+                onClick={() => {
+                  setToggle(true)
+                  setSelectedCarId(booking.car) // needs booking to work
+                }}
+              >
+                Add Review
+              </button>
+              <CreateReview
+                toggle={toggle}
+                handleToggle={handleToggle}
+                linkReview={linkReview}
+                carId={selectedCarId}
+              />{' '}
             </li>
           ))}
         </ul>
       )}
+
+      {/* {reviews ? (
+        <div className="reviews">
+          {reviews.map((review) => (
+            <ReviewCard review={review} key={review._id} />
+          ))}
+        </div>
+      ) : (
+        <h2>loading...</h2>
+      )} */}
     </>
   )
 }

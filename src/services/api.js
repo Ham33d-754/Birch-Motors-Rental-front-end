@@ -7,7 +7,7 @@ Client.interceptors.request.use(
     // Reads the token in localStorage
     const token = localStorage.getItem('token')
     // if the token exists, we set the authorization header
-    console.log('cline=' + token)
+    console.log('client= ' + token)
     if (token) {
       config.headers['authorization'] = `Bearer ${token}`
     }
