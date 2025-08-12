@@ -18,7 +18,7 @@ const BookingForm = ({ car, user, handelClick }) => {
     setForm((prev) => ({ ...prev, [name]: value }))
     const hours = parseInt(value) || 0
     const calculatedAmount = car.pricePerHour * hours
-    setAmount(calculatedAmount)
+    setAmount(calculatedAmount * 1000)
 
     setMsg(`Your total Amount ${calculatedAmount} BHD`)
   }
@@ -72,7 +72,6 @@ const BookingForm = ({ car, user, handelClick }) => {
       <label>
         Payment Method:
         <select name="payMethod" value={form.payMethod} onChange={handleChange}>
-          <option value="Cash">Cash</option>
           <option value="Card">Card</option>
         </select>
       </label>
