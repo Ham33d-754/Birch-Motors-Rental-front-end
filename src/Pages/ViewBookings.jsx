@@ -25,6 +25,7 @@ const ViewBookings = ({ user }) => {
     }
     linkBookings()
     linkReview()
+
   }, [user])
   return (
     <>
