@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import Client, { BASE_URL } from '../services/api'
 import BookingForm from './BookingForm'
 import CarCard from '../Components/CarCard'
+import Search from '../Components/Search'
 
 const Booking = ({ user }) => {
   const [cars, setCars] = useState([])
@@ -24,6 +25,9 @@ const Booking = ({ user }) => {
 
   return (
     <div>
+      <h2>Search bar goes here</h2>
+      <Search />
+
       {clicked ? (
         <BookingForm car={selectedCar} user={user} handelClick={handelClick} />
       ) : (
