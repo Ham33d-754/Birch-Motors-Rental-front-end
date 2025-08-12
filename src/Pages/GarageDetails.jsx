@@ -4,7 +4,7 @@ import Client, { BASE_URL } from '../services/api'
 import CreateCar from '../Components/Createcar'
 import CarCard from '../Components/CarCard'
 
-const GarageDetails = () => {
+const GarageDetails = ({ user }) => {
   const { garageId } = useParams()
   const [garage, setGarage] = useState(null)
   const [isOpen, setIsOpen] = useState(false)
@@ -40,7 +40,7 @@ const GarageDetails = () => {
         fetchGarageAndCars={fetchGarageAndCars}
       />
       {listOfCars ? (
-        listOfCars.map((car) => <CarCard car={car} key={car._id} />)
+        listOfCars.map((car) => <CarCard car={car} key={car._id} user={user} />)
       ) : (
         <h2>no cars avaliable</h2>
       )}
