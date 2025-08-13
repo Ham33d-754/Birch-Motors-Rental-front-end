@@ -9,20 +9,20 @@ const Payment = ({ bookingData }) => {
   const [clientSecret, setClientSecret] = useState('')
 
   useEffect(() => {
-    const initializeStripe = async () => {
-      const stripeInstance = await loadStripe(
-        import.meta.env.VITE_STRIP_PUBLISHABLE_KEY
-      )
+    const get_PublishableKey = async () => {
+      const resopnse = await Client.get(`${BASE_URL}/strip`)
+
+      const stripeInstance = await loadStripe(resopnse.data)
       setStripe(stripeInstance)
     }
 
-    initializeStripe()
+    get_PublishableKey()
   }, [])
 
   useEffect(() => {
     const fetchClientSecret = async () => {
       try {
-        const response = await Client.post(`${BASE_URL}/create-payment`, {
+        const response = await Client.post(`${BASE_URL}/strip/create-payment`, {
           amount: bookingData.amount
         })
         setClientSecret(response.data.clientSecret)
