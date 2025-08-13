@@ -12,7 +12,7 @@ header {
   border-bottom: 2px solid #a0896f;
 }
 
-.centers{
+.centers {
   text-align: center;
 }
 
@@ -558,4 +558,140 @@ nav button {
 
 .booking-card button:hover {
   background-color: #af8e6c;
+}
+
+/* Garage styles */
+.garages-section {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  justify-content: center;
+  max-width: 900px;
+  margin: 2rem auto;
+  padding: 1rem;
+}
+
+.garages-section h2 {
+  width: 100%;
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.garage-button {
+  display: block;
+  margin: 0 auto auto;
+  padding: 0.6rem 1.2rem;
+  background-color: #a38364;
+  color: white;
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.garage-button:hover {
+  background-color: #af8e6c;
+}
+
+.garage-card {
+  flex: 1 1 280px;
+  max-width: 300px;
+  background-color: #f9f9f9;
+  padding: 1rem;
+  border-radius: 0.75rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Garage Styles */
+
+.garage-card {
+  flex: 1 1 280px;
+  max-width: 300px;
+  background-color: #f9f9f9;
+  padding: 1.2rem;
+  border-radius: 0.75rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.garage-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+}
+
+.garage-card h3 {
+  margin: 0;
+  font-size: 1.2rem;
+  color: #1f2937;
+  text-align: center;
+}
+
+
+/* Garage Details Styles */
+
+.garage-details {
+  max-width: 900px;
+  margin: 2rem auto;
+  padding: 1.5rem;
+  background-color: #f9fafb;
+  border-radius: 1rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.garage-details h2 {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+  color: #1f2937; 
+}
+
+.garage-details h3 {
+  font-size: 1.125rem;
+  color: #4b5563; 
+  margin-bottom: 1rem;
+}
+
+.primary-btn,
+.delete-btn {
+  background-color: #a38364;
+  color: #ffffff;
+  border: none;
+  padding: 0.25rem 0.75rem;
+  font-size: 0.875rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background-color 0.2s;
+}
+
+.primary-btn:hover,
+.delete-btn:hover {
+  background-color: #af8e6c;
+}
+
+.manager-controls {
+  display: flex;
+  gap: 0.5rem;
+  margin: 1rem 0;
+}
+
+.listOfCars {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.listOfCars > div {
+  background-color: #ffffff;
+  border-radius: 0.75rem;
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.05);
+  padding: 1rem;
+  flex: 1 1 200px;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.listOfCars > div:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }

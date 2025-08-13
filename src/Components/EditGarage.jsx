@@ -57,7 +57,7 @@ const CreateGarage = ({ toggle, handleToggle, fetchGarageAndCars }) => {
 
           <button type="submit">edit Garage</button>
         </form>
-        <button
+        <button className='garage-button'
           onClick={() => {
             fetchGarageAndCars()
             handleToggle()

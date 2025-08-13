@@ -10,11 +10,13 @@ const GarageCard = ({ garage }) => {
       {!garage ? (
         <p>No Garages Available</p>
       ) : (
-        <ul>
-          <li key={garage._id} onClick={() => handleClick(garage._id)}>
-            <h3>{garage.name} Garage </h3>
-          </li>
-        </ul>
+        <div
+          className="garage-card"
+          key={garage._id}
+          onClick={() => handleClick(garage._id)}
+        >
+          <h3>{garage.name} Garage </h3>
+        </div>
       )}
     </>
   )

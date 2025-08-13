@@ -19,16 +19,22 @@ const Garage = () => {
   return (
     <>
       <h2>Your Garages</h2>
-      <button onClick={handleToggle}>add garage</button>
+      <button className="garage-button" onClick={handleToggle}>
+        add garage
+      </button>
       <CreateGarage
         toggle={toggle}
         handleToggle={handleToggle}
         linkGarage={linkGarage}
       />
       {garages ? (
-        <div className="garages">
+        <div className="garages-section">
           {garages.map((garage) => (
-            <GarageCard garage={garage} key={garage._id} />
+            <GarageCard
+              garage={garage}
+              key={garage._id}
+              className="garage-cards"
+            />
           ))}
         </div>
       ) : (
