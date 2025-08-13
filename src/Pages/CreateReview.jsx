@@ -17,6 +17,7 @@ const CreateReview = ({ toggle, handleToggle, linkReview, carId }) => {
   const handleSubmit = async (e) => {
     e.preventDefault()
     try {
+      console.log(review)
       const res = await Client.post(`${BASE_URL}/reviews`, {
         ...review,
         car: carId
@@ -30,8 +31,8 @@ const CreateReview = ({ toggle, handleToggle, linkReview, carId }) => {
     }
   }
   return (
-    <div style={styles.overlay}>
-      <div style={styles.modal}>
+    <div className="overlay">
+      <div className="modal">
         {msg}
         <form onSubmit={handleSubmit}>
           <label htmlFor="rating">Rating: </label>
@@ -63,26 +64,6 @@ const CreateReview = ({ toggle, handleToggle, linkReview, carId }) => {
       </div>
     </div>
   )
-}
-
-const styles = {
-  overlay: {
-    position: 'fixed',
-    top: 0,
-    left: 0,
-    right: 0,
-    bottom: 0,
-    backgroundColor: 'rgba(0, 0, 0, 0.5)',
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center'
-  },
-  modal: {
-    background: 'white',
-    padding: '20px',
-    borderRadius: '8px',
-    boxShadow: '0 2px 10px rgba(0,0,0,0.1)'
-  }
 }
 
 export default CreateReview

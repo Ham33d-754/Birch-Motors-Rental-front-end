@@ -21,11 +21,12 @@ const ViewBookings = ({ user }) => {
   useEffect(() => {
     const linkBookings = async () => {
       const res = await Client.get(`${BASE_URL}/bookings`)
-      setBookings(res.data.bookings)
+      setBookings(res.data.bookingDetails)
+      console.log(res.data.bookingDetails)
     }
+
     linkBookings()
     linkReview()
-
   }, [user])
   return (
     <>
@@ -34,30 +35,31 @@ const ViewBookings = ({ user }) => {
         <p>No Bookings yet</p>
       ) : (
         <ul>
-          {bookings.map((booking) => (
-            <li key={booking._id}>
+          {bookings.map((bookingDetail) => (
+            <li key={bookingDetail.booking._id}>
               <p>
                 <strong>Car: </strong>
-                {booking.car.name}
+                {bookingDetail.car.name}
               </p>
               <p>
                 <strong>Type: </strong>
-                {booking.car.carType}
+                {bookingDetail.car.carType}
               </p>
               <p>
                 <strong>Payment: </strong>
-                {booking.payMethod}
+                {bookingDetail.booking.payMethod}
               </p>
               <p>
                 <strong>Booked Duration : </strong>
-                {booking.hours} Hours
+                {bookingDetail.booking.hours} Hours
               </p>
-              <img src={booking.car.image} />
+              <img src={bookingDetail.car.image} />
               <h2>create review</h2>
               <button
                 onClick={() => {
                   setToggle(true)
-                  setSelectedCarId(booking.car) // needs booking to work
+                  console.log(bookingDetail.car._id)
+                  setSelectedCarId(bookingDetail.car._id) // needs booking to work
                 }}
               >
                 Add Review

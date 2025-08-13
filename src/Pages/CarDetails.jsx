@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import Client, { BASE_URL } from '../services/api'
 import EditCar from '../Components/EditCar'
+import Reviews from '../Components/Reviews'
 
 const CarDetails = ({ user }) => {
   let navigate = useNavigate()
@@ -49,6 +50,8 @@ const CarDetails = ({ user }) => {
               <EditCar toggle={toggle} car={car} toggleEdit={toggleEdit} />
               <button onClick={toggleReterned}>retern</button>
               <button onClick={deleteCar}>Delete</button>
+              <br />
+              <Reviews carId={carId} />
             </>
           ) : null}
         </>
