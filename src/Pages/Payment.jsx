@@ -12,7 +12,7 @@ const Payment = ({ bookingData }) => {
   useEffect(() => {
     const initializeStripe = async () => {
       const stripeInstance = await loadStripe(
-        'pk_test_51Rv49TRx39hn0Agb28OPamOLPiAKef8zzta8RFXKR5hdDrtMcW3oh5khj31ytIjUr074SVCWJk4CDymiOHpFwCuN009kucu3ux'
+        import.meta.env.VITE_STRIP_PUBLISHABLE_KEY
       )
       setStripe(stripeInstance)
     }

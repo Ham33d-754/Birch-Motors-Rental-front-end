@@ -3,13 +3,15 @@ import { useNavigate, useParams } from 'react-router-dom'
 import Client, { BASE_URL } from '../services/api'
 import CreateCar from '../Components/Createcar'
 import CarCard from '../Components/CarCard'
+import EditGarage from '../Components/EditGarage'
 
-const GarageDetails = () => {
+const GarageDetails = ({ user }) => {
+  let navigate = useNavigate()
   const { garageId } = useParams()
   const [garage, setGarage] = useState(null)
   const [isOpen, setIsOpen] = useState(false)
   const [listOfCars, setListOfCars] = useState(null)
-
+  const [toggle, setToggle] = useState(false)
   const fetchGarageAndCars = async () => {
     const res = await Client.get(`${BASE_URL}/garages/${garageId}`)
     const res2 = await Client.get(`${BASE_URL}/cars/garage/${garageId}`)
@@ -24,8 +26,13 @@ const GarageDetails = () => {
   const hadelOpen = () => {
     setIsOpen(!isOpen)
   }
-  console.log(garage)
-  console.log(listOfCars)
+  const handleToggle = () => {
+    setToggle(!toggle)
+  }
+  const deleteGarage = async () => {
+    const res = await Client.delete(`${BASE_URL}/garages/${garageId}`)
+    navigate('/garages')
+  }
 
   let display = garage ? (
     <div>
@@ -39,8 +46,19 @@ const GarageDetails = () => {
         hadelOpen={hadelOpen}
         fetchGarageAndCars={fetchGarageAndCars}
       />
+      {user.role === 'manager' ? (
+        <>
+          <EditGarage
+            handleToggle={handleToggle}
+            toggle={toggle}
+            fetchGarageAndCars={fetchGarageAndCars}
+          />
+          <button onClick={handleToggle}>Edit</button>
+          <button onClick={deleteGarage}>Delete</button>
+        </>
+      ) : null}
       {listOfCars ? (
-        listOfCars.map((car) => <CarCard car={car} key={car._id} />)
+        listOfCars.map((car) => <CarCard car={car} key={car._id} user={user} />)
       ) : (
         <h2>no cars avaliable</h2>
       )}

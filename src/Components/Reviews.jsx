@@ -1,7 +1,29 @@
-const Reviews = () => {
+import { useEffect, useState } from 'react'
+import Client, { BASE_URL } from '../services/api'
+import { useParams } from 'react-router-dom'
+
+const Reviews = ({ carId }) => {
+  const [reviews, setReviews] = useState(null)
+  useEffect(() => {
+    const getReviews = async () => {
+      const reponse = await Client.get(`${BASE_URL}/reviews/${carId}`)
+      console.log(reponse.data)
+      setReviews(reponse.data)
+    }
+    getReviews()
+  }, [])
   return (
     <>
-    
+      {reviews ? (
+        reviews.map((review) => (
+          <div className="comment" key={review._id}>
+            <h2>Rating: {review.rating}</h2>
+            <p>comment: {review.comment}</p>
+          </div>
+        ))
+      ) : (
+        <h2>loading..</h2>
+      )}
     </>
   )
 }

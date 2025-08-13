@@ -51,7 +51,10 @@ const App = () => {
         {user && user.role === 'manager' ? (
           <>
             <Route path="/garages" element={<Garage />} />
-            <Route path="/garages/:garageId" element={<GarageDetails />} />
+            <Route
+              path="/garages/:garageId"
+              element={<GarageDetails user={user} />}
+            />
             <Route path="/signIn" element={<Login setUser={setUser} />} />
             <Route path="/cars/new" element={<CreateCar />} />
           </>
@@ -73,7 +76,7 @@ const App = () => {
           </>
         ) : null}
         <Route path="/signIn" element={<Login setUser={setUser} />} />
-        <Route path="/cars/:carId" element={<CarDetails />} />
+        <Route path="/cars/:carId" element={<CarDetails user={user} />} />
         <Route path="/register" element={<Register user={user} />} />
       </Routes>
     </>
