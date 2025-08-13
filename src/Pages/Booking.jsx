@@ -30,17 +30,16 @@ const Booking = ({ user }) => {
 
   return (
     <div>
-      <h2>Find a Car</h2>
-      <Search
-        cars={cars}
-        onSelectCar={handleSelectedCar}
-        onResults={setSearchResults}
-      />
-
       {clicked ? (
         <BookingForm car={selectedCar} user={user} handelClick={handelClick} />
       ) : (
         <>
+          <h2>Find a Car</h2>
+          <Search
+            cars={cars}
+            onSelectCar={handleSelectedCar}
+            onResults={setSearchResults}
+          />
           <h2>Available Cars</h2>
           <div>
             {carsToDisplay.map((car) => (

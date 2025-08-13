@@ -1,7 +1,13 @@
-import { useNavigate } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
 
 const CarCard = ({ car, handleSelectedCar, handelClick }) => {
   let navigate = useNavigate()
+  const location = useLocation()
+  const currentUrl = `${location.pathname}`
+  const basePath = currentUrl.split('/')[1]
+
+  console.log(basePath)
+
   return (
     <>
       {car ? (
@@ -13,7 +19,7 @@ const CarCard = ({ car, handleSelectedCar, handelClick }) => {
             <button onClick={() => navigate(`/cars/${car._id}`)}>
               more details
             </button>
-            {car.Rented ? null : (
+            {car.Rented ? null : basePath === `garages` ? null : (
               <button
                 onClick={() => {
                   handleSelectedCar(car)
