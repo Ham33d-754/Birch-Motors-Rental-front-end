@@ -29,21 +29,25 @@ const Booking = ({ user }) => {
   const carsToDisplay = searchResults.length > 0 ? searchResults : cars
 
   return (
-    <div>
+    <div className="booking-container">
       {clicked ? (
         <BookingForm car={selectedCar} user={user} handelClick={handelClick} />
       ) : (
         <>
-          <h2>Find a Car</h2>
-          <Search
-            cars={cars}
-            onSelectCar={handleSelectedCar}
-            onResults={setSearchResults}
-          />
+          <div className="search-section">
+            <h2>Find a Car</h2>
+            <Search 
+              cars={cars}
+              onSelectCar={handleSelectedCar}
+              onResults={setSearchResults}
+            />
+          </div>
+
           <h2>Available Cars</h2>
-          <div>
+          <div className="cars-grid">
             {carsToDisplay.map((car) => (
               <div>
+
                 <CarCard
                   car={car}
                   key={car._id}

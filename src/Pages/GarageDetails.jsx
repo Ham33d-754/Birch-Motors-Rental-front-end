@@ -35,37 +35,53 @@ const GarageDetails = ({ user }) => {
   }
 
   let display = garage ? (
-    <div>
+    <div className="garage-details">
       <h2>Garage Details</h2>
       <h2>{garage.name}</h2>
-      <h2>{garage.location}</h2>
-      <button onClick={hadelOpen}>Add new Car</button>
+      <h3>{garage.location}</h3>
+
+      <button className="primary-btn" onClick={hadelOpen}>
+        Add New Car
+      </button>
+
       <CreateCar
         garageId={garageId}
         isOpen={isOpen}
         hadelOpen={hadelOpen}
         fetchGarageAndCars={fetchGarageAndCars}
       />
-      {user.role === 'manager' ? (
-        <>
+
+      {user.role === 'manager' && (
+        <div className="manager-controls">
+          <button className="primary-btn" onClick={handleToggle}>
+            Edit
+          </button>
+          <button className="primary-btn delete-btn" onClick={deleteGarage}>
+            Delete
+          </button>
+
           <EditGarage
             handleToggle={handleToggle}
             toggle={toggle}
             fetchGarageAndCars={fetchGarageAndCars}
           />
-          <button onClick={handleToggle}>Edit</button>
-          <button onClick={deleteGarage}>Delete</button>
-        </>
-      ) : null}
-      {listOfCars ? (
-        listOfCars.map((car) => <CarCard car={car} key={car._id} user={user} />)
-      ) : (
-        <h2>no cars avaliable</h2>
+        </div>
       )}
+
+      <div className="listOfCars">
+        {listOfCars && listOfCars.length > 0 ? (
+          listOfCars.map((car) => (
+            <CarCard car={car} key={car._id} user={user} />
+          ))
+        ) : (
+          <h3>No cars available</h3>
+        )}
+      </div>
     </div>
   ) : (
     <h2>Loading...</h2>
   )
+
   return <>{display}</>
 }
 export default GarageDetails

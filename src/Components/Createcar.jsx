@@ -81,6 +81,7 @@ const CreateCar = ({ garageId, isOpen, hadelOpen, fetchGarageAndCars }) => {
             <button type="submit">Add Car</button>
           </form>
           <button
+            className="garage-button"
             onClick={() => {
               fetchGarageAndCars()
               hadelOpen()

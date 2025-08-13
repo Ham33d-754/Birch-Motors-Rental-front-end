@@ -47,7 +47,7 @@ const CreateGarage = ({ toggle, handleToggle, linkGarage }) => {
 
           <button type="submit">Add Garage</button>
         </form>
-        <button
+        <button className='garage-button'
           onClick={() => {
             linkGarage()
             handleToggle()
