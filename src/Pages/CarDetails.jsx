@@ -15,6 +15,7 @@ const CarDetails = ({ user }) => {
       const response = await Client.get(`${BASE_URL}/cars/${carId}`)
       setCar(response.data.car)
       setGarage(response.data.garage)
+      console.log(response.data)
     }
     getCar()
   }, [])

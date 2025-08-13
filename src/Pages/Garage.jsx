@@ -8,7 +8,6 @@ const Garage = () => {
   const [toggle, setToggle] = useState(false)
   const linkGarage = async () => {
     const res = await Client.get(`${BASE_URL}/garages`)
-    console.log(res.data.garages)
     setGarages(res.data.garages)
   }
   useEffect(() => {

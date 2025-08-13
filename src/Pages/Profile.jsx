@@ -29,7 +29,7 @@ const Profile = () => {
             Edit Profile
           </button>
           <h2>Your Bookings</h2>
-          <ViewBookings user={userProfile}/>
+          <ViewBookings user={userProfile} />
         </div>
       ) : null}
     </>

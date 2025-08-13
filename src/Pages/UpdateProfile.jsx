@@ -1,11 +1,11 @@
 import { useEffect, useState } from 'react'
 import Client from '../services/api'
 import { useNavigate, useParams } from 'react-router-dom'
+
 const UpdateProfile = ({ user }) => {
   const { userId } = useParams()
   useEffect(() => {
     const getUserApi = async () => {
-      console.log(userId)
       const response = await Client.get(`/profile/${userId}`)
       setFormValue({
         username: response.data.user.username,
@@ -147,7 +147,6 @@ const UpdateProfile = ({ user }) => {
             </button>
           </>
         )}
-
         <br />
         <button type="submit"> Edit</button>
       </form>

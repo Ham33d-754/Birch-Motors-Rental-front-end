@@ -7,7 +7,7 @@ import Login from './Pages/Login'
 import Header from './Components/Header'
 import checkSession from './services/checkSession'
 import CarDetails from './Pages/CarDetails'
-import { use, useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import Register from './Pages/Register'
 import UpdateProfile from './Pages/UpdateProfile'
 import Booking from './Pages/Booking'
@@ -25,7 +25,6 @@ const App = () => {
     const token = localStorage.getItem('token')
     if (token) {
       let currentUser = await checkSession()
-      console.log(currentUser)
       setUser(currentUser)
     }
   }

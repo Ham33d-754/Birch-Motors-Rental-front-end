@@ -4,14 +4,12 @@ import Client, { BASE_URL } from '../services/api'
 
 const ViewBookings = ({ user }) => {
   const [bookings, setBookings] = useState([])
-  //
   const [reviews, setReviews] = useState(null)
   const [selectedCarId, setSelectedCarId] = useState(null)
 
   const [toggle, setToggle] = useState(false)
   const linkReview = async () => {
     const res = await Client.get(`${BASE_URL}/reviews`)
-    console.log(` review1 ${res.data.reviews}`)
     setReviews(` review2 ${res.data.reviews}`)
   }
 
@@ -21,8 +19,7 @@ const ViewBookings = ({ user }) => {
   useEffect(() => {
     const linkBookings = async () => {
       const res = await Client.get(`${BASE_URL}/bookings`)
-      setBookings(res.data.bookingDetails)
-      console.log(res.data.bookingDetails)
+      setBookings(res.data.bookingDetails || [])
     }
 
     linkBookings()
@@ -59,7 +56,7 @@ const ViewBookings = ({ user }) => {
                 onClick={() => {
                   setToggle(true)
                   console.log(bookingDetail.car._id)
-                  setSelectedCarId(bookingDetail.car._id) // needs booking to work
+                  setSelectedCarId(bookingDetail.car._id)
                 }}
               >
                 Add Review
@@ -74,16 +71,6 @@ const ViewBookings = ({ user }) => {
           ))}
         </ul>
       )}
-
-      {/* {reviews ? (
-        <div className="reviews">
-          {reviews.map((review) => (
-            <ReviewCard review={review} key={review._id} />
-          ))}
-        </div>
-      ) : (
-        <h2>loading...</h2>
-      )} */}
     </>
   )
 }

@@ -3,9 +3,8 @@ import Client, { BASE_URL } from '../services/api'
 import BookingForm from './BookingForm'
 import CarCard from '../Components/CarCard'
 import Search from '../Components/Search'
-//
+
 const Booking = ({ user }) => {
-  //
   const [cars, setCars] = useState([])
   const [searchResults, setSearchResults] = useState([])
   const [selectedCar, setSelectedCar] = useState(null)
