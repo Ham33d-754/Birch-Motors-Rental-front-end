@@ -88,10 +88,6 @@ Users can:
 | Manager | manager  | manager1234 |
 | User    | user     | user1234    |
 
-## 🖼 ScreenShots
-
----
-
 ## 🔮 Future Enchancements
 
 - Booking Cancellation
@@ -99,6 +95,31 @@ Users can:
 - more Admin functionality
 
 ---
+
+## 🖼 ScreenShots
+
+ERD
+---
+
+Logo
+---
+
+![alt text](image.png)
+
+
+WireFrames 
+---
+
+![alt text](<image_720 (5).png>)
+![alt text](<image_720 (4).png>)
+![alt text](<image_720 (3).png>)
+![alt text](<image_720 (1).png>)
+![alt text](<image_720 (6).png>)
+![alt text](<image_720 (7).png>)
+![alt text](image_720.png)
+
+---
+
 
 ## 🙌 Credits
 
