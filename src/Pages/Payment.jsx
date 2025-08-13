@@ -5,7 +5,6 @@ import CheckoutForm from '../Components/CheckoutForm'
 import { Elements } from '@stripe/react-stripe-js'
 
 const Payment = ({ bookingData }) => {
-  console.log(bookingData)
   const [stripe, setStripe] = useState(null)
   const [clientSecret, setClientSecret] = useState('')
 

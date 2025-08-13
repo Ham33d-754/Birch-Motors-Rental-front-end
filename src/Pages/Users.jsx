@@ -1,15 +1,11 @@
 import { useEffect, useState } from 'react'
 import Client, { BASE_URL } from '../services/api'
-import { Link, useNavigate, useParams } from 'react-router-dom'
-import UpdateProfile from './UpdateProfile'
-import Profile from './Profile'
+import { Link } from 'react-router-dom'
 
 const Users = ({ user }) => {
-  let navigate = useNavigate()
   const [listOfUsers, setListOfUsers] = useState(null)
   useEffect(() => {
     const getUser = async () => {
-      console.log(user)
       if (user.role === 'admin') {
         const response = await Client.get(`${BASE_URL}/profile`)
         setListOfUsers(response.data.listOfUsers)

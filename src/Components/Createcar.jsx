@@ -1,6 +1,4 @@
-import axios from 'axios'
 import { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
 import Client, { BASE_URL } from '../services/api'
 
 const CreateCar = ({ garageId, isOpen, hadelOpen, fetchGarageAndCars }) => {
