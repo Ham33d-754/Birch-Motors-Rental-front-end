@@ -5,9 +5,6 @@ const CarCard = ({ car, handleSelectedCar, handelClick }) => {
   const location = useLocation()
   const currentUrl = `${location.pathname}`
   const basePath = currentUrl.split('/')[1]
-
-  console.log(basePath)
-
   return (
     <>
       {car ? (
