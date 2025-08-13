@@ -27,13 +27,12 @@ const ViewBookings = ({ user }) => {
   }, [user])
   return (
     <>
-      <h2>My Bookings</h2>
       {bookings.length === 0 ? (
-        <p>No Bookings yet</p>
+        <p className='centers'>No Bookings yet..</p>
       ) : (
-        <ul>
+        <div className="bookings-list">
           {bookings.map((bookingDetail) => (
-            <li key={bookingDetail.booking._id}>
+            <div className="booking-card" key={bookingDetail.booking._id}>
               <p>
                 <strong>Car: </strong>
                 {bookingDetail.car.name}
@@ -51,7 +50,6 @@ const ViewBookings = ({ user }) => {
                 {bookingDetail.booking.hours} Hours
               </p>
               <img src={bookingDetail.car.image} />
-              <h2>create review</h2>
               <button
                 onClick={() => {
                   setToggle(true)
@@ -66,10 +64,10 @@ const ViewBookings = ({ user }) => {
                 handleToggle={handleToggle}
                 linkReview={linkReview}
                 carId={selectedCarId}
-              />{' '}
-            </li>
+              />
+            </div>
           ))}
-        </ul>
+        </div>
       )}
     </>
   )

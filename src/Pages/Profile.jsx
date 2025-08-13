@@ -17,19 +17,25 @@ const Profile = () => {
   return (
     <>
       {userProfile ? (
-        <div className="profile">
-          <h2>username: {userProfile.username}</h2>
-          <h2>email: {userProfile.email}</h2>
-          <h2>phone: {userProfile.phone}</h2>
-          <button
-            onClick={() => {
-              navigate(`/${userProfile._id}/edit`)
-            }}
-          >
-            Edit Profile
-          </button>
-          <h2>Your Bookings</h2>
-          <ViewBookings user={userProfile} />
+        <div>
+          <div className="profile-section">
+            <h2>Profile:</h2>
+            <h2>{userProfile.username}</h2>
+            <h2>{userProfile.email}</h2>
+            <h2>{userProfile.phone}</h2>
+            <button
+              className="profile-button"
+              onClick={() => {
+                navigate(`/${userProfile._id}/edit`)
+              }}
+            >
+              Edit Profile
+            </button>
+          </div>
+          <div className="bookings-section">
+            <h2>My Bookings</h2>
+            <ViewBookings user={userProfile} />
+          </div>
         </div>
       ) : null}
     </>
