@@ -19,8 +19,7 @@ const ViewBookings = ({ user }) => {
   useEffect(() => {
     const linkBookings = async () => {
       const res = await Client.get(`${BASE_URL}/bookings`)
-      setBookings(res.data.bookingDetails)
-      console.log(res.data.bookingDetails)
+      setBookings(res.data.bookingDetails || [])
     }
 
     linkBookings()
