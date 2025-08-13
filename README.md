@@ -1,4 +1,5 @@
 # 🚗 Birch Motors
+![alt text](image.png)
 
 Welcome to **Birch Motors App**, a sleek and modern web platform built for showcasing and managing car renting. This project demonstrates full-stack development with strong focus on functionality, clean UI, and scalability.
 
@@ -98,28 +99,22 @@ Users can:
 
 ## 🖼 ScreenShots
 
-ERD
----
 
-Logo
----
+## ERD
 
-![alt text](image.png)
+![alt text](image32.png)
+
+## hericky diagram
 
 
-WireFrames 
----
+![alt text](image22.png)
 
-![alt text](<image_720 (5).png>)
-![alt text](<image_720 (4).png>)
-![alt text](<image_720 (3).png>)
-![alt text](<image_720 (1).png>)
-![alt text](<image_720 (6).png>)
-![alt text](<image_720 (7).png>)
-![alt text](image_720.png)
+[WireFrames](https://drive.google.com/drive/folders/1HD_D0V6IDMcSgwhrGkpt2461EwxhOd0N?usp=sharing)
+
+
+
 
 ---
-
 
 ## 🙌 Credits
 
