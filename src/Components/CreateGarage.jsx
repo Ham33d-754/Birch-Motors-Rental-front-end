@@ -27,7 +27,7 @@ const CreateGarage = ({ toggle, handleToggle, linkGarage }) => {
   return (
     <div className="overlay">
       <div className="modal">
-        {msg}
+        {msg ? <div className="message">{msg}</div> : null}
         <form onSubmit={handleSubmit}>
           <label htmlFor="name">Garage Name: </label>
           <input
@@ -47,7 +47,8 @@ const CreateGarage = ({ toggle, handleToggle, linkGarage }) => {
 
           <button type="submit">Add Garage</button>
         </form>
-        <button className='garage-button'
+        <button
+          className="garage-button"
           onClick={() => {
             linkGarage()
             handleToggle()

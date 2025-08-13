@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import  { BASE_URL } from '../services/api'
+import { BASE_URL } from '../services/api'
 import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
 
@@ -56,10 +56,15 @@ const Register = ({ user }) => {
 
   return (
     <>
-      {msg}
-      <br />
-      {msgPhone}
       <form onSubmit={handelSubmit}>
+        {msg || msgPhone ? (
+          <div className="message">
+            {msg}
+            <br />
+            {msgPhone}
+          </div>
+        ) : null}
+
         <label htmlFor="username">Username</label>
         <input
           name="username"

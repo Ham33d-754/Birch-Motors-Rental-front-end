@@ -15,7 +15,6 @@ const CarDetails = ({ user }) => {
       const response = await Client.get(`${BASE_URL}/cars/${carId}`)
       setCar(response.data.car)
       setGarage(response.data.garage)
-      console.log(response.data)
     }
     getCar()
   }, [])
@@ -43,20 +42,24 @@ const CarDetails = ({ user }) => {
             <img src={car.image} alt={`an image of a ${car.name}`} />
             <h2>name: {car.name}</h2>
             <h3>type: {car.carType}</h3>
-            <h3>Price per Hour: {car.pricePerHour}</h3>
+            <h3>Rent Per Hour: {car.pricePerHour} BHD</h3>
             <h3>location: {garage.location}</h3>
             <h3>Rented: {car.Rented ? 'yes' : 'no'}</h3>
           </div>
 
           {user.role === 'manager' ? (
             <>
-              <div className='manager-actions'>
+              <div className="manager-actions">
                 <button className="btn" onClick={toggle}>
                   Edit
                 </button>
                 <EditCar toggle={toggle} car={car} toggleEdit={toggleEdit} />
-                <button className='btn' onClick={toggleReterned}>Retern Car</button>
-                <button className='btn' onClick={deleteCar}>Delete</button>
+                <button className="btn" onClick={toggleReterned}>
+                  {car.Rented ? 'Retern Car' : 'Mark as Rented'}
+                </button>
+                <button className="btn" onClick={deleteCar}>
+                  Delete
+                </button>
                 <br />
                 <Reviews carId={carId} />
               </div>

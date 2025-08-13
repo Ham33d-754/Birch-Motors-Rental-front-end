@@ -37,7 +37,8 @@ const EditCar = ({ car, toggle, toggleEdit }) => {
     <>
       <div className="overlay">
         <div className="modal">
-          {msg}
+          {msg ? <div className="message">{msg}</div> : null}
+
           <h2>edit {formVlaues.name}</h2>
           <form onSubmit={handleSubmit}>
             <label htmlFor="name">Car Name</label>

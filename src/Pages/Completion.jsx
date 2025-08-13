@@ -1,9 +1,13 @@
-
+import { Link } from 'react-router-dom'
 
 const Completion = () => {
   return (
     <>
-      <h2>Payment Success</h2>
+      <div className="payment-success">
+        <h2>Payment Successful!</h2>
+        <p>Thank you for your payment. Your transaction has been completed.</p>
+        <Link to="/">Return to Home</Link>
+      </div>
     </>
   )
 }

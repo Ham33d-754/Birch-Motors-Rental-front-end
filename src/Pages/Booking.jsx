@@ -36,7 +36,7 @@ const Booking = ({ user }) => {
         <>
           <div className="search-section">
             <h2>Find a Car</h2>
-            <Search 
+            <Search
               cars={cars}
               onSelectCar={handleSelectedCar}
               onResults={setSearchResults}
@@ -46,8 +46,7 @@ const Booking = ({ user }) => {
           <h2>Available Cars</h2>
           <div className="cars-grid">
             {carsToDisplay.map((car) => (
-              <div>
-
+              <div key={car._id}>
                 <CarCard
                   car={car}
                   key={car._id}

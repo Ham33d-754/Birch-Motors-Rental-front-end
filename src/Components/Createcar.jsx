@@ -36,7 +36,7 @@ const CreateCar = ({ garageId, isOpen, hadelOpen, fetchGarageAndCars }) => {
     <>
       <div className="overlay">
         <div className="modal">
-          {msg}
+          {msg ? <div className="message">{msg}</div> : null}
           <h2>Add a new Car</h2>
           <form onSubmit={handleSubmit}>
             <label htmlFor="name">Car Name</label>
@@ -63,14 +63,13 @@ const CreateCar = ({ garageId, isOpen, hadelOpen, fetchGarageAndCars }) => {
 
             <label htmlFor="image">Image</label>
             <input
-              type="file"
+              type="text"
               name="image"
               value={car.image}
-              accept="image/*"
               onChange={handleChange}
             />
             <br />
-            <label htmlFor="pricePerHour">price per hour</label>
+            <label htmlFor="pricePerHour">Rent Per Hourr</label>
             <input
               type="text"
               name="pricePerHour"

@@ -14,7 +14,6 @@ import Booking from './Pages/Booking'
 import Profile from './Pages/Profile'
 import Users from './Pages/Users'
 import CreateCar from './Components/Createcar'
-import Payment from './Pages/Payment'
 
 import Completion from './Pages/Completion'
 
@@ -45,7 +44,6 @@ const App = () => {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/booking" element={<Booking user={user} />} />
-        <Route path="/payment" element={<Payment />} />
         <Route path="/success" element={<Completion />} />
         {user && user.role === 'manager' ? (
           <>

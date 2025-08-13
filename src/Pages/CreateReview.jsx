@@ -27,7 +27,7 @@ const CreateReview = ({ toggle, handleToggle, linkReview, carId }) => {
   return (
     <div className="overlay">
       <div className="modal">
-        {msg}
+        {msg ? <div className="message">{msg}</div> : null}
         <form onSubmit={handleSubmit}>
           <label htmlFor="rating">Rating: </label>
           <input
