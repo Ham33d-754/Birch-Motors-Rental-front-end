@@ -12,7 +12,7 @@ const CarCard = ({ car, handleSelectedCar, handelClick }) => {
           <img src={car.image} alt={`an image of a ${car.name}`} />
           <div className="car-info">
             <h2>{car.name}</h2>
-            <h3>price per hour {car.pricePerHour}</h3>
+            <h3>Rent Per Hour {car.pricePerHour} BHD</h3>
             <button onClick={() => navigate(`/cars/${car._id}`)}>
               more details
             </button>

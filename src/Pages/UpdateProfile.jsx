@@ -73,10 +73,15 @@ const UpdateProfile = ({ user }) => {
   }
   return (
     <>
-      {msg}
-      <br />
-      {msgPhone}
       <form onSubmit={handelSubmit}>
+        {msg || msgPhone ? (
+          <div className="message">
+            {msg}
+            <br />
+            {msgPhone}
+          </div>
+        ) : null}
+
         <label htmlFor="username">Username</label>
         <input
           name="username"
@@ -149,6 +154,13 @@ const UpdateProfile = ({ user }) => {
         )}
         <br />
         <button type="submit"> Edit</button>
+        <button
+          onClick={() => {
+            navigate(`/${userId}`)
+          }}
+        >
+          Back
+        </button>
       </form>
     </>
   )
