@@ -1,6 +1,5 @@
 import { useState } from 'react'
 import SearchCar from './SearchCar'
-//
 const Search = ({ cars, onSelectCar, onResults }) => {
   const [searchQuery, setSearchQuery] = useState('')
 

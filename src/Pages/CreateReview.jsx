@@ -1,6 +1,4 @@
-// import axios from 'axios'
 import { useState } from 'react'
-// import { useNavigate } from 'react-router-dom'
 import Client, { BASE_URL } from '../services/api'
 
 const CreateReview = ({ toggle, handleToggle, linkReview, carId }) => {
@@ -8,16 +6,12 @@ const CreateReview = ({ toggle, handleToggle, linkReview, carId }) => {
 
   const [review, setReview] = useState({ rating: '', comment: '' })
   const [msg, setMsg] = useState('')
-
-  // const navigate = useNavigate()
-
   const handleChange = (e) => {
     setReview({ ...review, [e.target.id]: e.target.value })
   }
   const handleSubmit = async (e) => {
     e.preventDefault()
     try {
-      console.log(review)
       const res = await Client.post(`${BASE_URL}/reviews`, {
         ...review,
         car: carId

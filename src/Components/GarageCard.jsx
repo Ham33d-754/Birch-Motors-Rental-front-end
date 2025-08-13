@@ -1,11 +1,7 @@
-import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import axios from 'axios'
-import Client, { BASE_URL } from '../services/api'
 
 const GarageCard = ({ garage }) => {
   const navigate = useNavigate()
-
   const handleClick = (id) => {
     navigate(`/garages/${id}`)
   }

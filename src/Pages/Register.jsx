@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import Client, { BASE_URL } from '../services/api'
+import  { BASE_URL } from '../services/api'
 import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
 

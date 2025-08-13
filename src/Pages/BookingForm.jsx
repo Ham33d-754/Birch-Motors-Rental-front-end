@@ -1,5 +1,4 @@
 import { useState } from 'react'
-import Client, { BASE_URL } from '../services/api'
 import Payment from './Payment'
 
 const BookingForm = ({ car, user, handelClick }) => {
@@ -38,7 +37,6 @@ const BookingForm = ({ car, user, handelClick }) => {
     setBookingData(bookingData)
     handleConfrim()
 
-    // const res = await Client.post(`${BASE_URL}/bookings`, bookingData)
   }
   const bookingForm = (
     <form onSubmit={handelSubmit}>

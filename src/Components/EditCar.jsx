@@ -6,7 +6,6 @@ const EditCar = ({ car, toggle, toggleEdit }) => {
   useEffect(() => {
     const getCar = async () => {
       const res = await Client.get(`${BASE_URL}/cars/${car._id}`)
-      console.log(res)
       setFormValues(res.data.car)
     }
     getCar()
@@ -83,7 +82,6 @@ const EditCar = ({ car, toggle, toggleEdit }) => {
           </form>
           <button
             onClick={() => {
-              //fetchGarageAndCars()
               toggle()
             }}
           >
