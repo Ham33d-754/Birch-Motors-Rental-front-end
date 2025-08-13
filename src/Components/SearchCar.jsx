@@ -2,7 +2,6 @@ const SearchCar = ({ onChange, onSubmit, value }) => {
   return (
     <>
       <form className="search-form" onSubmit={onSubmit}>
-        <button type="submit">Find</button>
         <input
           type="text"
           name="search"
@@ -11,6 +10,7 @@ const SearchCar = ({ onChange, onSubmit, value }) => {
           onChange={onChange}
           value={value}
         />
+        <button type="submit">Find</button>
       </form>
     </>
   )
