@@ -1,6 +1,6 @@
 # 🚗 Birch Motors
 
-![alt text](image-2.png)
+![alt text](./src/images/Birch-motor-rental%20logo.jpeg)
 
 Welcome to **Birch Motors App**, a sleek and modern web platform built for showcasing and managing car renting. This project demonstrates full-stack development with strong focus on functionality, clean UI, and scalability.
 
@@ -20,7 +20,7 @@ Welcome to **Birch Motors App**, a sleek and modern web platform built for showc
 
 ---
 
-- 👤 **Name:** Mahmood Ali
+- 👤 **Name:** Mahmood Abdulnabi
 - 💼 [LinkedIn](https://www.linkedin.com/in/mahmood-abdulnabi/)
 - 🐙 [GitHub](https://github.com/Ham33d-754)
 
@@ -61,6 +61,7 @@ Users can:
 | CSS               | Styling                   |
 | JWT               | User authentication       |
 | Trello            | Task & Project Management |
+| Stripe            | Payment Method            |
 
 ---
 
@@ -73,10 +74,6 @@ Users can:
 ### 🧩 Project Board:
 
 📌 [Trello Board](https://trello.com/b/B4Rdq3nV/my-trello-board)
-
-### 🧩 Front-End GitHub:
-
-📌 [Front-End](https://github.com/Ham33d-754/Birch-Motors-Rental-front-end.git)
 
 ### 🧩 Back-End GitHub:
 
@@ -92,9 +89,13 @@ Users can:
 
 ## 🔮 Future Enchancements
 
-- Booking Cancellation
-- Refund Policy
-- more Admin functionality
+- Booking Cancellation.
+- Refund Policy.
+- More Admin functionality.
+- More Payment Methods like Checks.
+- More Car Types:
+
+![alt text](./images/Types-of-Cars.webp)
 
 ---
 
@@ -115,11 +116,5 @@ Users can:
 ## 🙌 Credits
 
 - [Stripe Payment Method](https://stripe.com/)
-
----
-
-- 👤 **Fawaz Aljar**
-- 👤 **Feras Albuflasa**
-- 👤 **Mahmood Ali**
 
 ---
