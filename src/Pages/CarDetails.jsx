@@ -15,6 +15,7 @@ const CarDetails = ({ user }) => {
       const response = await Client.get(`${BASE_URL}/cars/${carId}`)
       setCar(response.data.car)
       setGarage(response.data.garage)
+      console.log(response)
     }
     getCar()
   }, [])
@@ -61,8 +62,8 @@ const CarDetails = ({ user }) => {
                   Delete
                 </button>
                 <br />
-                <Reviews carId={carId} />
               </div>
+              <Reviews carId={carId} />
             </>
           ) : null}
         </>
